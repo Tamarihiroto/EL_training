@@ -1,0 +1,12 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>To Doリスト</title>
+  </head>
+  <body>
+    <h1>TODOリスト</h1>
+    <% @tasks.each do |task| %>
+      <p><%= task.title%></p>
+    <% end %>
+  </body>
+</html>
