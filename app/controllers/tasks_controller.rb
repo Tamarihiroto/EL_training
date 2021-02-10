@@ -15,8 +15,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
+      flash[:notice] = 'タスクが作成されました。'
       redirect_to "/tasks"
     else
+      flash.now[:alert] = 'タイトルを入れてください'
       render 'new'
     end
   end

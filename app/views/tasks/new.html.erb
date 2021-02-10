@@ -1,5 +1,5 @@
 <h1>作成ページ</h1>
-<%= form_with model: @task do |form| %>
+<%= form_with model: @task, local: true do |form| %>
   <p>タイトル</p>
   <%= form.text_field :title %>
   <p>内容</p>
