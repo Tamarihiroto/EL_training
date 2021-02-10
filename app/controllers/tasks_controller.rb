@@ -33,6 +33,7 @@ class TasksController < ApplicationController
       flash[:notice] = 'タスク内容が編集されました。'
       redirect_to "/tasks"
     else
+      flash.now[:alert] = '変更ができません'
       render 'edit'
     end
   end
