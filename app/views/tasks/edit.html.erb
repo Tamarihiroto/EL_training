@@ -1,0 +1,8 @@
+<h1>編集ページ</h1>
+<%= form_with model: @task, local: true do |form| %>
+  <%= form.label :title, 'タイトル' %>
+  <%= form.text_field :title %>
+  <%= form.label :content, '内容' %>
+  <%= form.text_field :content %>
+  <%= form.submit "完了" %>
+<% end %>
