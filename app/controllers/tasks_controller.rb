@@ -17,8 +17,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to "/tasks", notice: t('notice.new')
     else
-      # render 'new', alert: t('alert.new')
-      render json: { status: "ERROR", data: @post.error }
+      render 'new', alert: t('alert.new')
     end
   end
 
