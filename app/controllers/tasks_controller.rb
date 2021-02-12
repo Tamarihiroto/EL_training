@@ -15,11 +15,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      flash[:notice] = 'タスクが作成されました。'
-      redirect_to "/tasks"
+      redirect_to "/tasks", notice: t('notice.new')
     else
-      flash.now[:alert] = 'タイトルを入れてください'
-      render 'new'
+      # render 'new', alert: t('alert.new')
+      render json: { status: "ERROR", data: @post.error }
     end
   end
 
