@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: %i(show edit update)
+  
   def index
     @tasks = Task.all
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def new
@@ -23,7 +24,24 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @task.update(task_params)
+      flash[:notice] = 'タスク内容が編集されました。'
+      redirect_to "/tasks"
+    else
+      flash.now[:alert] = '変更ができません'
+      render 'edit'
+    end
+  end
+
   private
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
   
   def task_params
     params.require(:task).permit(:title, :content)
