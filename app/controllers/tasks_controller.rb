@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update]
+  before_action :set_task, only: %i(show edit update)
   
   def index
     @tasks = Task.all
