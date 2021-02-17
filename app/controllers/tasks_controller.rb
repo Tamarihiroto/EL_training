@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to tasks_path, notice: t('notice.new')
     else
-      flash.now[:alert] = 'タイトルを入れてください'
+      flash.now[:alert] = t('alert.new')
       render :new
     end
   end
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to tasks_path, notice: t('notice.update')
     else
-      flash.now[:alert] = 'タイトルを入れてください'
+      flash.now[:alert] = t('alert.update')
       render :edit
     end
   end
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
     if @task.destroy
       redirect_to tasks_path, notice: t('notice.destroy')
     else
-      flash.now[:alert] = 'タイトルを入れてください'
+      flash.now[:alert] = t('alert.destroy')
       render :show
     end
   end
