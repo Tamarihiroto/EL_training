@@ -16,11 +16,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      flash[:notice] = 'タスクが作成されました。'
-      redirect_to tasks_path
+      redirect_to tasks_path, notice: t('notice.new')
     else
-      flash.now[:alert] = 'タイトルを入れてください'
-      render new_task_path
+      flash.now[:alert] = t('alert.new')
+      render :new
     end
   end
 
@@ -29,21 +28,19 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:notice] = 'タスク内容が編集されました。'
-      redirect_to tasks_path
+      redirect_to tasks_path, notice: t('notice.update')
     else
-      flash.now[:alert] = '変更ができません'
-      render edit_task_path(@task.id)
+      flash.now[:alert] = t('alert.update')
+      render :edit
     end
   end
   
   def destroy
     if @task.destroy
-      flash[:notice] = 'タスクが削除されました。'
-      redirect_to tasks_path
+      redirect_to tasks_path, notice: t('notice.destroy')
     else
-      flash.now[:alert] = 'タスクを見つけられませんでした'
-      render task_path(@task.id)
+      flash.now[:alert] = t('alert.destroy')
+      render :show
     end
   end
 

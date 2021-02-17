@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      task: タスク
+    attributes:
+      task:
+        title: タイトル
+        content: 内容
+  notice:
+    new: タスクを作成しました
+    update: タスクを更新しました
+    destroy: タスクを削除しました
+  alert:
+    new: タイトルを入れてください
+    update: タイトルを入れてください
+    destroy: タスクを見つけられませんでした
