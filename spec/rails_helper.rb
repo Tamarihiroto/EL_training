@@ -34,6 +34,14 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
+  config.before(:suite) do
+    DatabaseRewinder.clean_all
+  end
+
+  config.after(:each) do
+    DatabaseRewinder.clean
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
