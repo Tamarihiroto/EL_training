@@ -1,9 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe 'Tasks', type: :system do
-  it "降順確認" do
-    visit "/tasks"
-    task = Task.all.order(created_at: :desc)
-    expect(task.ids).to eq  [49, 50, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 29, 28, 27, 24, 23, 22, 21, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 4, 3, 2, 1]
+  describe "降順確認" do
+    before do
+      Task.all.destroy_all
+    end
+    let(:task_1) { create(:task, id: 5000) }
+    let(:task_2) { create(:task, id: 5001) }
+    let(:task_3) { create(:task, id: 5002) }
+    it "テスト" do
+      task_1
+      task_2
+      task_3
+      visit "/tasks"
+      task_id_fact = Task.all.order(created_at: :desc)
+      expect(task_id_fact.ids).to eq [5002, 5001, 5000]
+    end
   end
 end
