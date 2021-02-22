@@ -3,18 +3,13 @@ require 'rails_helper'
 RSpec.describe 'Tasks', type: :system do
   describe "降順確認" do
     before do
-      Task.all.destroy_all
+      tasks = create_list(:task, 3)
     end
-    let(:task_1) { create(:task, id: 5000) }
-    let(:task_2) { create(:task, id: 5001) }
-    let(:task_3) { create(:task, id: 5002) }
     it "テスト" do
-      task_1
-      task_2
-      task_3
-      visit "/tasks"
-      task_id_fact = Task.all.order(created_at: :desc)
-      expect(task_id_fact.ids).to eq [5002, 5001, 5000]
-    end
+      visit tasks_path
+      task_list = all('.task_list') 
+      expect(task_list[0]).to have_content '3'
+      expect(task_list[1]).to have_content '2'
+      expect(task_list[2]).to have_content '1'
   end
 end
