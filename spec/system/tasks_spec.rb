@@ -17,4 +17,11 @@ RSpec.describe 'Tasks', type: :system do
       expect(task_list[2]).to have_content tasks_expect[2].id
     end
   end
+  describe "バリデーション確認" do
+    it do
+      task = Task.new()
+      task.valid?
+      expect(task.errors.messages[:title]).to include('を入力してください')
+    end
+  end
 end
