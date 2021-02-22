@@ -7,11 +7,14 @@ RSpec.describe 'Tasks', type: :system do
     before do 
       tasks
     end
-    it "テスト" do
+    
+    it do
+      tasks_expect = tasks.reverse
       visit tasks_path
-      task_list = all('.task_list') 
-      expect(task_list[0]).to have_content '3'
-      expect(task_list[1]).to have_content '2'
-      expect(task_list[2]).to have_content '1'
+      task_list = all('.task_id')
+      expect(task_list[0]).to have_content tasks_expect[0].id
+      expect(task_list[1]).to have_content tasks_expect[1].id
+      expect(task_list[2]).to have_content tasks_expect[2].id
+    end
   end
 end
