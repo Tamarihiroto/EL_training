@@ -1,8 +1,2 @@
 <h1>作成ページ</h1>
-<%= form_with model: @task, local: true do |form| %>
-  <%= form.label :title, 'タイトル' %>
-  <%= form.text_field :title %>
-  <%= form.label :content, '内容' %>
-  <%= form.text_field :content %>
-  <%= form.submit "作成" %>
-<% end %>
+<%=render "form" %>

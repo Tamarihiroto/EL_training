@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: %i(show edit update destroy)
+  
   def index
     @tasks = Task.all.order(created_at: :desc)
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def new
@@ -15,15 +16,39 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      flash[:notice] = 'タスクが作成されました。'
-      redirect_to "/tasks"
+      redirect_to tasks_path, notice: t('notice.new')
     else
-      flash.now[:alert] = 'タイトルを入れてください'
-      render 'new'
+      flash.now[:alert] = t('alert.new')
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @task.update(task_params)
+      redirect_to tasks_path, notice: t('notice.update')
+    else
+      flash.now[:alert] = t('alert.update')
+      render :edit
+    end
+  end
+  
+  def destroy
+    if @task.destroy
+      redirect_to tasks_path, notice: t('notice.destroy')
+    else
+      flash.now[:alert] = t('alert.destroy')
+      render :show
     end
   end
 
   private
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
   
   def task_params
     params.require(:task).permit(:title, :content)
