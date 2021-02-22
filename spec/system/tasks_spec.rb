@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Tasks', type: :system do
   describe "降順確認" do
-    before do
-      tasks = create_list(:task, 3)
+    let(:tasks) { create_list(:task, 3) }
+
+    before do 
+      tasks
     end
     it "テスト" do
       visit tasks_path
