@@ -3,5 +3,7 @@
   <%= form.text_field :title %>
   <%= form.label :content, '内容' %>
   <%= form.text_field :content %>
-  <%= form.submit "完了" %>
+  <%= form.label :deadline, '終了期限' %>
+  <%= form.datetime_field :deadline, {} %>
+  <%= form.submit '完了' %>
 <% end %>

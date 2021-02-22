@@ -1,4 +1,15 @@
 <h1>TODOリスト</h1>
-<% @tasks.each do |task| %>
-  <p><%= task.title%></p>
-<% end %>
+<table>
+  <tr>
+    <th><%= sort_order "created_at", "タイトル" %></th>
+    <th><%= sort_order "deadline", "終了期限" %></th>
+  </tr>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td>
+        <%= link_to task.title, task_path(task.id) %>
+      </td>
+      <td><%= l task.deadline, format: :short %></td>
+    </tr>
+  <% end %>
+</table>
