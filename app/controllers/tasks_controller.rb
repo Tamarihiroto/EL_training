@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i(show edit update)
+  before_action :set_task, only: %i(show edit update destroy)
   
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(created_at: :desc)
   end
 
   def show
@@ -16,11 +16,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      flash[:notice] = 'タスクが作成されました。'
-      redirect_to "/tasks"
+      redirect_to tasks_path, notice: t('notice.new')
     else
-      flash.now[:alert] = 'タイトルを入れてください'
-      render 'new'
+      flash.now[:alert] = t('alert.new')
+      render :new
     end
   end
 
@@ -29,11 +28,19 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:notice] = 'タスク内容が編集されました。'
-      redirect_to "/tasks"
+      redirect_to tasks_path, notice: t('notice.update')
     else
-      flash.now[:alert] = '変更ができません'
-      render 'edit'
+      flash.now[:alert] = t('alert.update')
+      render :edit
+    end
+  end
+  
+  def destroy
+    if @task.destroy
+      redirect_to tasks_path, notice: t('notice.destroy')
+    else
+      flash.now[:alert] = t('alert.destroy')
+      render :show
     end
   end
 

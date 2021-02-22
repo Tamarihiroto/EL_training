@@ -1,3 +1,4 @@
 <h1>詳細ページ</h1>
 <p><%= @task.title%></p>
 <%= link_to "編集", edit_task_path(params[:id]) %>
+<%= link_to "削除", task_path(@task.id), { method: "delete" } %>
