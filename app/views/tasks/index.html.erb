@@ -1,4 +1,5 @@
 <h1>TODOリスト</h1>
+<%=render "search" %>
 <% @tasks.each do |task| %>
   <p class="task_id"><%= task.id %></p>
   <p class="task_title"><%= task.title%></p>
