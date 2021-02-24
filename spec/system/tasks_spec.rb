@@ -11,6 +11,9 @@ RSpec.describe 'Tasks', type: :system do
     it "created_atの降順になること" do
       tasks_expect = tasks.reverse
       visit tasks_path
+      # 2回でcreated_atで降順化
+      click_on "タイトル"
+      click_on "タイトル"
       task_list = all('.task_id')
       expect(task_list[0]).to have_content tasks_expect[0].id
       expect(task_list[1]).to have_content tasks_expect[1].id
