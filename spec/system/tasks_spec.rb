@@ -19,5 +19,15 @@ RSpec.describe 'Tasks', type: :system do
       expect(task_list[1]).to have_content tasks_expect[1].id
       expect(task_list[2]).to have_content tasks_expect[2].id
     end
+
+    it "deadlineの昇順になること" do
+      visit tasks_path
+      # deadlineで昇順化
+      click_on "終了期限"
+      task_list = all('.task_deadline')
+      expect(task_list[0]).to have_content I18n.l(tasks[0].deadline, format: :short)
+      expect(task_list[1]).to have_content I18n.l(tasks[1].deadline, format: :short)
+      expect(task_list[2]).to have_content I18n.l(tasks[2].deadline, format: :short)
+    end
   end
 end
