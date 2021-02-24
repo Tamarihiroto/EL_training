@@ -44,6 +44,15 @@ class TasksController < ApplicationController
     end
   end
 
+  
+  def search
+    if params[:title].present?
+      @tasks = Task.where('title LIKE ?', "%#{params[:title]}%")
+    else
+      @tasks = Task.none
+    end
+  end
+
   private
 
   def set_task
