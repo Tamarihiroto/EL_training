@@ -10,13 +10,6 @@
   </head>
 
   <body>
-    <ul>
-      <% if @task %>
-        <% @task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      <% end %>
-    </ul>
     <% if flash[:notice] %>
       <%= flash[:notice] %>
     <% end %>
