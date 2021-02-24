@@ -11,7 +11,7 @@
       <td>
         <%= link_to task.title, task_path(task.id) %>
       </td>
-      <td><%= l task.deadline, format: :short %></td>
+      <td class="task_deadline"><%= l task.deadline, format: :short %></td>
     </tr>
   <% end %>
 </table>
