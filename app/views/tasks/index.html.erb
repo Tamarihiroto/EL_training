@@ -1,11 +1,13 @@
 <h1>TODOリスト</h1>
 <table>
   <tr>
+    <th>ID</th>
     <th><%= sort_order "created_at", "タイトル" %></th>
     <th><%= sort_order "deadline", "終了期限" %></th>
   </tr>
   <% @tasks.each do |task| %>
     <tr>
+      <td class="task_id"><%= task.id %></td>
       <td>
         <%= link_to task.title, task_path(task.id) %>
       </td>
