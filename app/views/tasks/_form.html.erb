@@ -3,5 +3,7 @@
   <%= form.text_field :title %>
   <%= form.label :content, '内容' %>
   <%= form.text_field :content %>
-  <%= form.submit "完了" %>
+  <%= form.label :status, 'ステータス' %>
+  <%= form.select :status, { '--': 'default', '未着手': 'untouched', '着手中': 'in_progress', '完了': 'done'}%>
+  <%= form.submit '完了' %>
 <% end %>
