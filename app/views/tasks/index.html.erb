@@ -11,7 +11,7 @@
       <td class="task_title">
         <%= link_to task.title, task_path(task.id) %>
       </td>
-      <td class="task_status"><%= I18n.t("enums.task.type.#{task.status}") %></td>
+      <td class="task_status"><%= I18n.t("enums.task.status.#{task.status}") %></td>
     </tr>
   <% end %>
 </table>
