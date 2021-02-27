@@ -44,6 +44,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def search
+    if params[:title].present? && params[:status].present?
+      @tasks = Task.where('title LIKE ?', "%#{params[:title]}%").where(status: "#{params[:status]}")
+    else
+      @tasks = Task.all
+      flash.now[:alert] = t('alert.search')
+    end
+  end
+
   private
 
   def set_task
