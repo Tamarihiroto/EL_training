@@ -1,0 +1,8 @@
+<p>検索</p>
+<%= form_with url: search_tasks_path, method: :get, local: true do |form| %>
+  <%= form.label :title, 'タイトル' %>
+  <%= form.text_field :title %>
+  <%= form.label :status, 'タイトル' %>
+  <%= form.select :status, { '--': 'default', '未着手': 'untouched', '着手中': 'in_progress', '完了': 'done'}%>
+  <%= form.submit :search %>
+<% end %>
