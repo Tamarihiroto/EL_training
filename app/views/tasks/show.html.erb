@@ -1,4 +1,11 @@
 <h1>詳細ページ</h1>
+<ul class="error_message_list">
+  <% if @task %>
+    <% @task.errors.full_messages.each do |message| %>
+      <li class="error_message"><%= message %></li>
+    <% end %>
+  <% end %>
+</ul>
 <p><%= @task.title%></p>
 <p><%= @task.content%></p>
 <p><%= @task.is_done%></p>
