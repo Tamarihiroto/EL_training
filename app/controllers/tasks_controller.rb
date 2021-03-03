@@ -46,11 +46,12 @@ class TasksController < ApplicationController
 
   def search
     if params[:title].present? && params[:status].present?
-      @tasks = Task.where('title LIKE ?', "%#{params[:title]}%").where(status: "#{params[:status]}")
+      @tasks = Task.search(params[:title], params[:status])
     else
       @tasks = Task.all
       flash.now[:alert] = t('alert.search')
     end
+    render :index
   end
 
   private
@@ -60,6 +61,6 @@ class TasksController < ApplicationController
   end
   
   def task_params
-    params.require(:task).permit(:title, :content, :status)
+    params.require(:task).permit(:title, :content, :status, :priority)
   end
 end
