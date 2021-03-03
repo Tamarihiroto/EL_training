@@ -1,4 +1,11 @@
 <%= form_with model: @task, local: true do |form| %>
+  <ul class="error_message_list">
+    <% if @task.errors.any? %>
+      <% @task.errors.full_messages.each do |message| %>
+        <li class="error_message"><%= message %></li>
+      <% end %>
+    <% end %>
+  </ul>
   <%= form.label :title, 'タイトル' %>
   <%= form.text_field :title %>
   <%= form.label :content, '内容' %>
