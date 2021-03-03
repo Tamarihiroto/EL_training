@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   helper_method :sort_column, :sort_direction
   
   def index
-    @tasks = Task.all.order("#{sort_column} #{sort_direction}")
+    @tasks = Task.all.recent
   end
 
   def show
@@ -45,15 +45,25 @@ class TasksController < ApplicationController
     end
   end
 
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-   end
-   
-   def sort_column
-    Task.column_names.include?(params[:sort]) ? params[:sort] : 'title'
-   end
+  def sort_by_order
+    sort_data = params[:sort_data].split(',')
+    column = sort_column(sort_data[0])
+    direction = sort_direction(sort_data[1])
+    sort_params = {column: column, direction: direction}
+    @tasks = Task.sorted(sort_params)
+    render :index
+    
+  end
 
   private
+
+  def sort_direction(direction)
+    %w[asc desc].include?(direction) ? direction : 'desc'
+  end
+   
+  def sort_column(column)
+    Task.column_names.include?(column) ? column : 'created_at'
+  end
 
   def set_task
     @task = Task.find(params[:id])
