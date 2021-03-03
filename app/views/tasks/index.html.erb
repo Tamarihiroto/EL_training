@@ -1,9 +1,10 @@
 <h1>TODOリスト</h1>
+<%=render 'order_form' %>
 <table>
   <tr>
     <th>ID</th>
-    <th><%= sort_order "created_at", "タイトル" %></th>
-    <th><%= sort_order "deadline", "終了期限" %></th>
+    <th>タイトル</th>
+    <th>終了期限</th>
   </tr>
   <% @tasks.each do |task| %>
     <tr>
