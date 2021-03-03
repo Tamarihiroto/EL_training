@@ -9,9 +9,7 @@
   <% @tasks.each do |task| %>
     <tr>
       <td class="task_id"><%= task.id %></td>
-      <td class="task_title">
-        <%= link_to task.title, task_path(task.id) %>
-      </td>
+      <td class="task_title"><%= link_to task.title, task_path(task.id) %></td>
       <td class="task_deadline"><%= l task.deadline, format: :short %></td>
     </tr>
   <% end %>
