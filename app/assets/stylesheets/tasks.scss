@@ -1,3 +1,31 @@
 // Place all the styles related to the Task controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+  margin: 0;
+}
+
+// index
+.page_title{
+  padding: 20px;
+}
+
+a{
+  text-decoration: none;
+}
+
+.task_table{
+  width: 500px;
+  padding: 10px;
+  margin: 20px;
+  background-color: #DDD;
+  // border: solid 1px;
+  border-radius: 20px;
+}
+
+td {
+  padding: 5px;
+  width: calc(500px / 3);
+  // border-top: solid 1px;
+  border-collapse:  collapse;
+}

@@ -1,16 +1,18 @@
-<h1>TODOリスト</h1>
-<%= render 'order_form' %>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>タイトル</th>
-    <th>終了期限</th>
+<h1 class='page_title'>TODOリスト</h1>
+<table class='task_table'>
+  <tr class='task_tr'>
+    <th class='task_th'>ID</th>
+    <th class='task_th'>タイトル</th>
   </tr>
   <% @tasks.each do |task| %>
     <tr>
-      <td class="task_id"><%= task.id %></td>
-      <td class="task_title"><%= link_to task.title, task_path(task.id) %></td>
-      <td class="task_deadline"><%= l task.deadline, format: :short %></td>
+      <td class='task_id'><%= task.id %></td>
+      <td class='task_title'>
+        <%= link_to task.title, task_path(task.id) %>
+      </td>
     </tr>
   <% end %>
+  <tr>
+    <td><%= link_to '作成', new_task_path %></td>
+  </tr>
 </table>
