@@ -1,10 +1,12 @@
 <h1>TODOリスト</h1>
 <%=render "search" %>
+<%= render 'order_form' %>
 <table>
   <tr>
     <th>ID</th>
     <th>タイトル</th>
     <th>ステータス</th>
+    <th>終了期限</th>
   </tr>
   <% @tasks.each do |task| %>
     <tr>
@@ -12,6 +14,7 @@
       <td class="task_title">
         <%= link_to task.title, task_path(task.id) %>
       </td>
+      <td class="task_deadline"><%= l task.deadline, format: :short %></td>
       <td class="task_status"><%= I18n.t("enums.task.status.#{task.status}") %></td>
     </tr>
   <% end %>
