@@ -10,6 +10,8 @@
   <%= form.text_field :title %>
   <%= form.label :content, '内容' %>
   <%= form.text_field :content %>
+  <%= form.label :deadline, '終了期限' %>
+  <%= form.datetime_field :deadline, {} %>
   <%= form.label :priority, '優先順位' %>
   <%= form.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}%>
   <%= form.submit "完了" %>

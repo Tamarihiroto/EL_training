@@ -7,5 +7,8 @@
   <% end %>
 </ul>
 <p><%= @task.title%></p>
+<p><%= @task.content%></p>
+<p><%= @task.is_done%></p>
+<p><%= @task.deadline%></p>
 <%= link_to "編集", edit_task_path(params[:id]) %>
 <%= link_to "削除", task_path(@task.id), { method: "delete" } %>
