@@ -57,11 +57,12 @@ class TasksController < ApplicationController
       title: params[:title], 
       status: params[:status]
     }
-    @tasks = Task.search(search_params)
-    if @tasks.empty?
+    if search_params[:title].empty? && search_params[:status].empty?
       @tasks = Task.none
-      flash.now[:alert] = t('alert.search')
+    else
+      @tasks = Task.search(search_params)
     end
+    flash.now[:alert] = t('alert.search') if @tasks.empty?
     render :index
   end
 
