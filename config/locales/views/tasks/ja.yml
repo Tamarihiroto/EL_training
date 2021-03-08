@@ -17,7 +17,6 @@ ja:
         in_progress: 着手中
         done: 完了
       priority:
-        undefine: --
         high: 高
         middle: 中
         low: 低
