@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i(show edit update destroy)
   
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    @tasks = Task.all.recent
   end
 
   def show
@@ -44,12 +44,28 @@ class TasksController < ApplicationController
     end
   end
 
+  def sort_by_order
+    sort_data = params[:sort_data].split(',')
+    column = sort_column(sort_data[0])
+    direction = sort_direction(sort_data[1])
+    @tasks = Task.sorted(column: column, direction: direction)
+    render :index
+  end
+
   private
+
+  def sort_direction(direction)
+    %w[asc desc].include?(direction) ? direction : 'desc'
+  end
+   
+  def sort_column(column)
+    Task.column_names.include?(column) ? column : 'created_at'
+  end
 
   def set_task
     @task = Task.find(params[:id])
   end
-  
+
   def task_params
     params.require(:task).permit(:title, :content, :deadline, :status, :priority)
   end
