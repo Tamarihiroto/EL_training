@@ -57,7 +57,7 @@ class TasksController < ApplicationController
       title: params[:title], 
       status: params[:status]
     }
-    if search_params[:title].empty? && search_params[:status].empty?
+    if is_search_params_nil?(search_params)
       @tasks = Task.none
     else
       @tasks = Task.search(search_params)
@@ -74,6 +74,10 @@ class TasksController < ApplicationController
    
   def sort_column(column)
     Task.column_names.include?(column) ? column : 'created_at'
+  end
+
+  def is_search_params_nil?(search_params)
+    search_params.values.all?(&:empty?)
   end
 
   def set_task
