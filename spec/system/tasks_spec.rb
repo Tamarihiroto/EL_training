@@ -2,17 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Tasks', type: :system do
   describe "ソート" do
-    let(:task_1) { create(:task, priority: 'high') }
-    let(:task_2) { create(:task, priority: 'low') }
-    let(:task_3) { create(:task, priority: 'middle') }
-    let(:task_4) { create(:task, priority: 'undefine') }
+    let(:tasks) { create_list(:task, 3) }
 
     before do 
-      task_1
-      task_2
-      task_3
-      task_4
-      task_5
+      tasks
     end
     
     it 'created_atの降順になること' do
@@ -45,27 +38,25 @@ RSpec.describe 'Tasks', type: :system do
       expect(task_list[2]).to have_content I18n.l(tasks_expect[2].deadline, format: :short)
     end
     
-    it '優先順位が高い順にソートされること' do
+    it '優先度が高い順にソートされること' do
       visit tasks_path
-      # 優先順位が高い順にソート
-      click_on '優先順位'
+      select '優先度が高い', from: '並び替え'
+      click_on '並び替え'
       task_list = all('.task_priority')
-      expect(task_list[0]).to have_content I18n.t("enums.task.priority.#{task_1.priority}")
-      expect(task_list[1]).to have_content I18n.t("enums.task.priority.#{task_3.priority}")
-      expect(task_list[2]).to have_content I18n.t("enums.task.priority.#{task_2.priority}")
-      expect(task_list[3]).to have_content I18n.t("enums.task.priority.#{task_4.priority}")
+      expect(task_list[0]).to have_content I18n.t("enums.task.priority.#{tasks[0].priority}")
+      expect(task_list[1]).to have_content I18n.t("enums.task.priority.#{tasks[1].priority}")
+      expect(task_list[2]).to have_content I18n.t("enums.task.priority.#{tasks[2].priority}")
     end
 
-    it '優先順位が低い順にソートされること' do
+    it '優先度が低い順にソートされること' do
       visit tasks_path
-      # 優先順位が低い順にソート
-      click_on '優先順位'
-      click_on '優先順位'
+      select '優先度が低い', from: '並び替え'
+      click_on '並び替え'
       task_list = all('.task_priority')
-      expect(task_list[0]).to have_content I18n.t("enums.task.priority.#{task_4.priority}")
-      expect(task_list[1]).to have_content I18n.t("enums.task.priority.#{task_2.priority}")
-      expect(task_list[2]).to have_content I18n.t("enums.task.priority.#{task_3.priority}")
-      expect(task_list[3]).to have_content I18n.t("enums.task.priority.#{task_1.priority}")
+      expect(task_list[0]).to have_content I18n.t("enums.task.priority.#{tasks[2].priority}")
+      expect(task_list[1]).to have_content I18n.t("enums.task.priority.#{tasks[1].priority}")
+      expect(task_list[2]).to have_content I18n.t("enums.task.priority.#{tasks[0].priority}")
+    end
   end 
     
   describe '検索機能' do
@@ -77,28 +68,31 @@ RSpec.describe 'Tasks', type: :system do
     before { visit tasks_path }
  
     context 'タイトルとステータスを入力する場合' do
+      before do 
+        task_1
+        task_2
+        task_3
+        task_4
+        task_5
+      end
       context '正常系' do
         it '--のタスクが検索されること' do
-          fill_in 'タイトル', with: 'sample'
           select '--', from: 'ステータス'
           click_on 'search'
           expect(page).to have_content 'sample1'
         end
         it '未着手のタスクが検索されること' do
-          fill_in 'タイトル', with: 'sample'
           select '未着手', from: 'ステータス'
           click_on 'search'
           expect(page).to have_content 'sample2'
           expect(page).to have_content 'sample3'
         end
         it '着手中のタスクが検索されること' do
-          fill_in 'タイトル', with: 'sample'
           select '着手中', from: 'ステータス'
           click_on 'search'
           expect(page).to have_content 'sample4'
         end
         it '完了のタスクが検索されること' do
-          fill_in 'タイトル', with: 'sample'
           select '完了', from: 'ステータス'
           click_on 'search'
           expect(page).to have_content 'sample5'
@@ -108,13 +102,7 @@ RSpec.describe 'Tasks', type: :system do
       context '異常系' do
         it 'タスクが見つからないこと' do
           fill_in 'タイトル', with: ''
-          select '--', from: 'ステータス'
           click_on 'search'
-          expect(page).to have_content 'sample1'
-          expect(page).to have_content 'sample2'
-          expect(page).to have_content 'sample3'
-          expect(page).to have_content 'sample4'
-          expect(page).to have_content 'sample5'
           expect(page).to have_content 'タスクを見つけられませんでした'
         end
       end
