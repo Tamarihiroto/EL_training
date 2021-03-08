@@ -6,7 +6,9 @@ class Task < ApplicationRecord
   scope :sorted, -> (sort_params) { order("#{sort_params[:column]} #{sort_params[:direction]}") }
   scope :recent, -> { order(created_at: :desc) }
 
-  scope :search_title, -> (title) { where('title LIKE ?', "%#{title}%") }
-  scope :search_status, -> (status) { where(status: "#{status}") }
-  scope :search, -> (title, status) { search_title(title).search_status(status) }
+  scope :search, -> (search_params) {
+    search_title(search_params[:title]).search_status(search_params[:status]) 
+  }
+  scope :search_title, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
+  scope :search_status, -> (status) { where(status: "#{status}") if status.present? }
 end
