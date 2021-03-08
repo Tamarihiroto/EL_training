@@ -44,6 +44,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'enum_help'
 end
 
 group :development do

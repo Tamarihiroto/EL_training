@@ -10,5 +10,6 @@
 <p><%= @task.content%></p>
 <p><%= @task.is_done%></p>
 <p><%= @task.deadline%></p>
+<p><%= I18n.t("enums.task.status.#{@task.status}") %></p>
 <%= link_to "編集", edit_task_path(params[:id]) %>
 <%= link_to "削除", task_path(@task.id), { method: "delete" } %>
