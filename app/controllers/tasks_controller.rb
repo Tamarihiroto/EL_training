@@ -53,14 +53,13 @@ class TasksController < ApplicationController
   end
 
   def search
-    if params[:title].present? && params[:status].present?
-      @tasks = Task.search(params[:title], params[:status])
-    elsif params[:title].present?
-      @tasks = Task.search_title(params[:title])
-    elsif params[:status].present?
-      @tasks = Task.search_status(params[:status])
-    else
-      @tasks = Task.all
+    search_params = {
+      title: params[:title], 
+      status: params[:status]
+    }
+    @tasks = Task.search(search_params)
+    if @tasks.empty?
+      @tasks = Task.none
       flash.now[:alert] = t('alert.search')
     end
     render :index
