@@ -76,6 +76,8 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     execjs (2.7.0)
     factory_bot (6.1.0)
@@ -245,6 +247,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   database_cleaner
+  enum_help
   factory_bot_rails
   jbuilder (~> 2.5)
   kaminari

@@ -6,6 +6,15 @@ ja:
       task:
         title: タイトル
         content: 内容
+        deadline: 終了期限
+        status: ステータス
+  enums:
+    task:
+      status:
+        default: --
+        untouched: 未着手
+        in_progress: 着手中
+        done: 完了
   notice:
     new: タスクを作成しました
     update: タスクを更新しました
@@ -14,3 +23,4 @@ ja:
     new: タイトルを入れてください
     update: タイトルを入れてください
     destroy: タスクを見つけられませんでした
+    search: タスクを見つけられませんでした

@@ -1,5 +1,22 @@
 <h1>TODOリスト</h1>
-<% @tasks.each do |task| %>
-  <p class="task_id"><%= task.id %></p>
-  <p class="task_title"><%= task.title%></p>
-<% end %>
+<%= render "search" %>
+<%= render 'order_form' %>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>タイトル</th>
+    <th>終了期限</th>
+    <th>ステータス</th>
+  </tr>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td class="task_id"><%= task.id %></td>
+      <td class="task_title">
+        <%= link_to task.title, task_path(task.id) %>
+      </td>
+      <td class="task_deadline"><%= l task.deadline, format: :short %></td>
+      <td class="task_status"><%= I18n.t("enums.task.status.#{task.status}") %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "作成", new_task_path %>
