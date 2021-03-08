@@ -63,6 +63,7 @@ class TasksController < ApplicationController
       @tasks = Task.all
       flash.now[:alert] = t('alert.search')
     end
+    render :index
   end
 
   private
