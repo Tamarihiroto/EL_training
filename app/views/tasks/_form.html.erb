@@ -13,6 +13,6 @@
   <%= form.label :deadline, '終了期限' %>
   <%= form.datetime_field :deadline, {} %>
   <%= form.label :status, 'ステータス' %>
-  <%= form.select :status, { '--': 'default', '未着手': 'untouched', '着手中': 'in_progress', '完了': 'done'}%>
+  <%= form.select :status, Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]} %>
   <%= form.submit '完了' %>
 <% end %>
