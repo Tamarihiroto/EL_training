@@ -1,11 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Tasks', type: :system do
-  describe 'ソート' do
-    let(:tasks) { create_list(:task, 3) }
+  describe "ソート" do
+    let(:task_1) { create(:task, priority: 'high') }
+    let(:task_2) { create(:task, priority: 'low') }
+    let(:task_3) { create(:task, priority: 'middle') }
+    let(:task_4) { create(:task, priority: 'undefine') }
 
     before do 
-      tasks
+      task_1
+      task_2
+      task_3
+      task_4
+      task_5
     end
     
     it 'created_atの降順になること' do
@@ -37,19 +44,6 @@ RSpec.describe 'Tasks', type: :system do
       expect(task_list[1]).to have_content I18n.l(tasks_expect[1].deadline, format: :short)
       expect(task_list[2]).to have_content I18n.l(tasks_expect[2].deadline, format: :short)
     end
-  end
-  describe "ソート" do
-    let(:task_1) { create(:task, priority: 'high') }
-    let(:task_2) { create(:task, priority: 'low') }
-    let(:task_3) { create(:task, priority: 'middle') }
-    let(:task_4) { create(:task, priority: 'undefine') }
-
-    before do 
-      task_1
-      task_2
-      task_3
-      task_4
-    end
     
     it '優先順位が高い順にソートされること' do
       visit tasks_path
@@ -72,6 +66,58 @@ RSpec.describe 'Tasks', type: :system do
       expect(task_list[1]).to have_content I18n.t("enums.task.priority.#{task_2.priority}")
       expect(task_list[2]).to have_content I18n.t("enums.task.priority.#{task_3.priority}")
       expect(task_list[3]).to have_content I18n.t("enums.task.priority.#{task_1.priority}")
+  end 
+    
+  describe '検索機能' do
+    let(:task_1) { create(:task, title: 'sample1', status: 'default') }
+    let(:task_2) { create(:task, title: 'sample2', status: 'untouched') }
+    let(:task_3) { create(:task, title: 'sample3', status: 'untouched') }
+    let(:task_4) { create(:task, title: 'sample4', status: 'in_progress') }
+    let(:task_5) { create(:task, title: 'sample5', status: 'done') }
+    before { visit tasks_path }
+ 
+    context 'タイトルとステータスを入力する場合' do
+      context '正常系' do
+        it '--のタスクが検索されること' do
+          fill_in 'タイトル', with: 'sample'
+          select '--', from: 'ステータス'
+          click_on 'search'
+          expect(page).to have_content 'sample1'
+        end
+        it '未着手のタスクが検索されること' do
+          fill_in 'タイトル', with: 'sample'
+          select '未着手', from: 'ステータス'
+          click_on 'search'
+          expect(page).to have_content 'sample2'
+          expect(page).to have_content 'sample3'
+        end
+        it '着手中のタスクが検索されること' do
+          fill_in 'タイトル', with: 'sample'
+          select '着手中', from: 'ステータス'
+          click_on 'search'
+          expect(page).to have_content 'sample4'
+        end
+        it '完了のタスクが検索されること' do
+          fill_in 'タイトル', with: 'sample'
+          select '完了', from: 'ステータス'
+          click_on 'search'
+          expect(page).to have_content 'sample5'
+        end
+      end
+
+      context '異常系' do
+        it 'タスクが見つからないこと' do
+          fill_in 'タイトル', with: ''
+          select '--', from: 'ステータス'
+          click_on 'search'
+          expect(page).to have_content 'sample1'
+          expect(page).to have_content 'sample2'
+          expect(page).to have_content 'sample3'
+          expect(page).to have_content 'sample4'
+          expect(page).to have_content 'sample5'
+          expect(page).to have_content 'タスクを見つけられませんでした'
+        end
+      end
     end
   end
 end

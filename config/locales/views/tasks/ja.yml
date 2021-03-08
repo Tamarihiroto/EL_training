@@ -11,6 +11,11 @@ ja:
         priority: 優先順位
   enums:
     task:
+      status:
+        default: --
+        untouched: 未着手
+        in_progress: 着手中
+        done: 完了
       priority:
         undefine: --
         high: 高
@@ -24,3 +29,4 @@ ja:
     new: タイトルを入れてください
     update: タイトルを入れてください
     destroy: タスクを見つけられませんでした
+    search: タスクを見つけられませんでした
