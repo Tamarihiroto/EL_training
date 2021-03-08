@@ -11,6 +11,6 @@
   <%= form.label :content, '内容' %>
   <%= form.text_field :content %>
   <%= form.label :priority, '優先順位' %>
-  <%= form.select :priority, { '--': 'undefine', '高': 'high', '中': 'middle', '低': 'low'}%>
+  <%= form.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}%>
   <%= form.submit "完了" %>
 <% end %>
