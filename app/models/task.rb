@@ -8,7 +8,7 @@ class Task < ApplicationRecord
   }
   scope :recent, -> { order(created_at: :desc) }
 
-  scope :search, lambda { |title, status|
-    where('title LIKE ?', "%#{title}%").where(status: "#{status}")
-  }
+  scope :search_title, -> (title) { where('title LIKE ?', "%#{title}%") }
+  scope :search_status, -> (status) { where(status: "#{status}") }
+  scope :search, -> (title, status) { search_title(title).search_status(status) }
 end
