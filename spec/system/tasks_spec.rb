@@ -13,8 +13,8 @@ RSpec.describe 'Tasks', type: :system do
         tasks_expect = tasks.reverse
         visit tasks_path
         task_list = all('.task_id')
-        (0..2).each do |i|
-          expect(task_list[i]).to have_content tasks_expect[i].id
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content tasks_expect[i].id
         end
       end
     end
@@ -25,8 +25,8 @@ RSpec.describe 'Tasks', type: :system do
         select '終了期限が近い', from: '並び替え'
         click_on '並び替え'
         task_list = all('.task_deadline')
-        (0..2).each do |i|
-          expect(task_list[i]).to have_content I18n.l(tasks[i].deadline, format: :short)
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content I18n.l(tasks[i].deadline, format: :short)
         end
       end
 
@@ -36,8 +36,8 @@ RSpec.describe 'Tasks', type: :system do
         select '終了期限が遅い', from: '並び替え'
         click_on '並び替え'
         task_list = all('.task_deadline')
-        (0..2).each do |i|
-          expect(task_list[i]).to have_content I18n.l(tasks_expect[i].deadline, format: :short)
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content I18n.l(tasks_expect[i].deadline, format: :short)
         end
       end
     end
@@ -48,19 +48,20 @@ RSpec.describe 'Tasks', type: :system do
         select '優先度が高い', from: '並び替え'
         click_on '並び替え'
         task_list = all('.task_priority')
-        (0..2).each do |i|
-          expect(task_list[i]).to have_content I18n.t("enums.task.priority.#{tasks[i].priority}")
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content I18n.t("enums.task.priority.#{tasks[i].priority}")
         end
       end
 
       it '優先度が低い順にソートされること' do
+        tasks_expect = tasks.reverse
         visit tasks_path
         select '優先度が低い', from: '並び替え'
         click_on '並び替え'
         task_list = all('.task_priority')
-        expect(task_list[0]).to have_content I18n.t("enums.task.priority.#{tasks[2].priority}")
-        expect(task_list[1]).to have_content I18n.t("enums.task.priority.#{tasks[1].priority}")
-        expect(task_list[2]).to have_content I18n.t("enums.task.priority.#{tasks[0].priority}")
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content I18n.t("enums.task.priority.#{tasks_expect[i].priority}")
+        end
       end
     end
   end 
