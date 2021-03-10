@@ -13,8 +13,8 @@
   <%= form.label :deadline, '終了期限' %>
   <%= form.datetime_field :deadline, {} %>
   <%= form.label :status, 'ステータス' %>
-  <%= form.select :status, Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]} %>
+  <%= form.select :status, ja_select(Task.statuses, 'status') %>
   <%= form.label :priority, '優先順位' %>
-  <%= form.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}%>
+  <%= form.select :priority, ja_select(Task.priorities, 'priority')%>
   <%= form.submit "完了" %>
 <% end %>
