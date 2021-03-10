@@ -99,53 +99,53 @@ RSpec.describe 'Tasks', type: :system do
     end
   end
   describe 'ページネーション' do
-    let(:tasks) { create_list(:task, 26) }
+    let(:tasks) { create_list(:task, 21) }
 
     before do 
       tasks
     end
     
-    it '1ページで25個まで表示されること' do
+    it '1ページで20個まで表示されること' do
       visit tasks_path
-      expect(page).to have_content tasks[0].id
-      expect(page).to have_content tasks[24].id
-      expect(page).not_to have_content tasks[25].id
+      expect(page).not_to have_content I18n.l(tasks[0].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[1].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[20].deadline, format: :short)
     end
 
-    it '26個から次のページで表示されること' do
+    it '21個から次のページで表示されること' do
       visit tasks_path
       click_on '次へ'
-      expect(page).not_to have_content tasks[24].id
-      expect(page).to have_content tasks[25].id
+      expect(page).not_to have_content I18n.l(tasks[1].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[0].deadline, format: :short)
     end
 
-    it '「前に」を押すと前のページがで表示されること' do
+    it '「前へ」を押すと前のページがで表示されること' do
       visit tasks_path
       click_on '次へ'
-      expect(page).not_to have_content tasks[24].id
-      expect(page).to have_content tasks[25].id
+      expect(page).not_to have_content I18n.l(tasks[1].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[0].deadline, format: :short)
       click_on '前へ'
-      expect(page).to have_content tasks[0].id
-      expect(page).to have_content tasks[24].id
-      expect(page).not_to have_content tasks[25].id
+      expect(page).not_to have_content I18n.l(tasks[0].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[1].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[20].deadline, format: :short)
     end
 
     it '最後のページが表示されること' do
       visit tasks_path
       click_on '最後へ'
-      expect(page).not_to have_content tasks[24].id
-      expect(page).to have_content tasks[25].id
+      expect(page).not_to have_content I18n.l(tasks[1].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[0].deadline, format: :short)
     end
 
     it '最後のページが表示されること' do
       visit tasks_path
       click_on '最後へ'
-      expect(page).not_to have_content tasks[24].id
-      expect(page).to have_content tasks[25].id
+      expect(page).not_to have_content I18n.l(tasks[1].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[0].deadline, format: :short)
       click_on '最初に戻る'
-      expect(page).to have_content tasks[0].id
-      expect(page).to have_content tasks[24].id
-      expect(page).not_to have_content tasks[25].id
+      expect(page).not_to have_content I18n.l(tasks[0].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[1].deadline, format: :short)
+      expect(page).to have_content I18n.l(tasks[20].deadline, format: :short)
     end
   end
 end
