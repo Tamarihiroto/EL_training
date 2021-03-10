@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Tasks', type: :system do
-  describe "ソート" do
+  describe 'ソート' do
     let(:tasks) { create_list(:task, 3) }
 
     before do 
