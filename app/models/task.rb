@@ -11,4 +11,6 @@ class Task < ApplicationRecord
   }
   scope :search_title, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
   scope :search_status, -> (status) { where(status: "#{status}") if status.present? }
+
+  scope :split_tasks_on_a_page, -> (page_params) { page(page_params).per(20) }
 end
