@@ -5,7 +5,8 @@ FactoryBot.define do
 
   factory :task do
     title { "title" }
-    content { "content" }
+    content { 'content' }
     deadline { generate :task_deadline }
+    status { 'untouched' }
   end
 end

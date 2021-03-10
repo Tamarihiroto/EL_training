@@ -52,6 +52,20 @@ class TasksController < ApplicationController
     render :index
   end
 
+  def search
+    search_params = {
+      title: params[:title], 
+      status: params[:status]
+    }
+    if is_search_params_nil?(search_params)
+      @tasks = Task.none
+    else
+      @tasks = Task.search(search_params)
+    end
+    flash.now[:alert] = t('alert.search') if @tasks.empty?
+    render :index
+  end
+
   private
 
   def sort_direction(direction)
@@ -62,11 +76,15 @@ class TasksController < ApplicationController
     Task.column_names.include?(column) ? column : 'created_at'
   end
 
+  def is_search_params_nil?(search_params)
+    search_params.values.all?(&:empty?)
+  end
+
   def set_task
     @task = Task.find(params[:id])
   end
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline)
+    params.require(:task).permit(:title, :content, :deadline, :status)
   end
 end
