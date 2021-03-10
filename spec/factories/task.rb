@@ -1,6 +1,6 @@
 FactoryBot.define do
   sequence :task_deadline do |i|
-    "#{i} Feb 2021 11:38:00 JST +09:00"
+    Time.zone.now + i.day
   end
 
   sequence :task_priority do |i|

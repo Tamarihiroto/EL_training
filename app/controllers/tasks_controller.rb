@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i(show edit update destroy)
   
   def index
-    @tasks = Task.all.recent
+    @tasks = Task.all.recent().paginate(params[:page])
   end
 
   def show
@@ -48,7 +48,7 @@ class TasksController < ApplicationController
     sort_data = params[:sort_data].split(',')
     column = sort_column(sort_data[0])
     direction = sort_direction(sort_data[1])
-    @tasks = Task.sorted(column: column, direction: direction)
+    @tasks = Task.sorted(column: column, direction: direction).paginate(params[:page])
     render :index
   end
 
@@ -60,7 +60,7 @@ class TasksController < ApplicationController
     if is_search_params_nil?(search_params)
       @tasks = Task.none
     else
-      @tasks = Task.search(search_params)
+      @tasks = Task.search(search_params).paginate(params[:page])
     end
     flash.now[:alert] = t('alert.search') if @tasks.empty?
     render :index
