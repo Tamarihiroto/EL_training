@@ -8,34 +8,61 @@ RSpec.describe 'Tasks', type: :system do
       tasks
     end
     
-    it 'created_atの降順になること' do
-      tasks_expect = tasks.reverse
-      visit tasks_path
-      task_list = all('.task_id')
-      expect(task_list[0]).to have_content tasks_expect[0].id
-      expect(task_list[1]).to have_content tasks_expect[1].id
-      expect(task_list[2]).to have_content tasks_expect[2].id
+    context 'created_at' do
+      it '降順になること' do
+        tasks_expect = tasks.reverse
+        visit tasks_path
+        task_list = all('.task_id')
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content tasks_expect[i].id
+        end
+      end
     end
 
-    it 'deadlineの昇順になること' do
-      visit tasks_path
-      select '終了期限が近い', from: '並び替え'
-      click_on '並び替え'
-      task_list = all('.task_deadline')
-      expect(task_list[0]).to have_content I18n.l(tasks[0].deadline, format: :short)
-      expect(task_list[1]).to have_content I18n.l(tasks[1].deadline, format: :short)
-      expect(task_list[2]).to have_content I18n.l(tasks[2].deadline, format: :short)
-    end
+    context 'deadline' do
+      it '昇順になること' do
+        visit tasks_path
+        select '終了期限が近い', from: '並び替え'
+        click_on '並び替え'
+        task_list = all('.task_deadline')
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content I18n.l(tasks[i].deadline, format: :short)
+        end
+      end
 
-    it 'deadlineの降順になること' do
-      tasks_expect = tasks.reverse
-      visit tasks_path
-      select '終了期限が遅い', from: '並び替え'
-      click_on '並び替え'
-      task_list = all('.task_deadline')
-      expect(task_list[0]).to have_content I18n.l(tasks_expect[0].deadline, format: :short)
-      expect(task_list[1]).to have_content I18n.l(tasks_expect[1].deadline, format: :short)
-      expect(task_list[2]).to have_content I18n.l(tasks_expect[2].deadline, format: :short)
+      it '降順になること' do
+        tasks_expect = tasks.reverse
+        visit tasks_path
+        select '終了期限が遅い', from: '並び替え'
+        click_on '並び替え'
+        task_list = all('.task_deadline')
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content I18n.l(tasks_expect[i].deadline, format: :short)
+        end
+      end
+    end
+    
+    context 'priority' do
+      it '優先度が高い順にソートされること' do
+        visit tasks_path
+        select '優先度が高い', from: '並び替え'
+        click_on '並び替え'
+        task_list = all('.task_priority')
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content I18n.t("enums.task.priority.#{tasks[i].priority}")
+        end
+      end
+
+      it '優先度が低い順にソートされること' do
+        tasks_expect = tasks.reverse
+        visit tasks_path
+        select '優先度が低い', from: '並び替え'
+        click_on '並び替え'
+        task_list = all('.task_priority')
+        task_list.each_with_index do |task, i|
+          expect(task).to have_content I18n.t("enums.task.priority.#{tasks_expect[i].priority}")
+        end
+      end
     end
   end
   
