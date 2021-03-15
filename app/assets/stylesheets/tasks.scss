@@ -140,3 +140,27 @@ table{
   background-color: #666;
   color: white;
 }
+
+// search_form
+
+.search_name{
+  margin-bottom: 10px;
+}
+
+.search_form{
+  margin: 10px 0
+}
+
+.search_label{
+  display: none;
+}
+
+.search_title{
+  width: 160px;
+  padding: 9px 14px;
+}
+
+#status{
+  padding: 9px 14px;
+  border: none;
+}
