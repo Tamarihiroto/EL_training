@@ -15,4 +15,6 @@ class Task < ApplicationRecord
   scope :search_status, -> (status) { where(status: "#{status}") if status.present? }
 
   scope :paginate, -> (page_params) { page(page_params).per(20) }
+
+  has_one :user
 end
