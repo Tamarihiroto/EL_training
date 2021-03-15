@@ -1,18 +1,18 @@
 <%= render 'task_template' %>
-  <main class='task-index'>
-    <section class='task-index__form'>
+  <main class='tasks'>
+    <section class='tasks__form'>
       <%= render 'search' %>
       <%= render 'order_form' %>
     </section>
     <section>
-      <table class='task-index__table'>
+      <table class='tasks__table'>
         <thead>
           <tr>
-            <th class='task-index__table--th-id w-32'>ID</th>
+            <th class='tasks__table--th-id w-32'>ID</th>
             <th class='w-200'>タイトル</th>
             <th>終了期限</th>
             <th>ステータス</th>
-            <th class='task-index__table--th-priority'>優先順位</th>
+            <th class='tasks__table--th-priority'>優先順位</th>
           </tr>
         <thead>
         <tbody>
