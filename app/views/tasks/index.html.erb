@@ -1,27 +1,28 @@
-<h1 class='page_title'>TODOリスト</h1>
-<%= render "search" %>
-<%= render 'order_form' %>
-<table class='task_table'>
-  <tr class='task_tr'>
-    <th>ID</th>
-    <th>タイトル</th>
-    <th>終了期限</th>
-    <th>ステータス</th>
-    <th>優先順位</th>
-  </tr>
-  <% @tasks.each do |task| %>
-    <tr>
-      <td class="task_id"><%= task.id %></td>
-      <td class="task_title">
-        <%= link_to task.title, task_path(task.id) %>
-      </td>
-      <td class="task_deadline"><%= l task.deadline, format: :short %></td>
-      <td class="task_status"><%= I18n.t("enums.task.status.#{task.status}") %></td>
-      <td class='task_priority'><%= I18n.t("enums.task.priority.#{task.priority}") %></td>
-    </tr>
-  <% end %>
-  <tr>
-  </tr>
-</table>
-<%= link_to "作成", new_task_path %>
-<%= paginate @tasks %>
+<%= render 'task_template' %>
+  <div class='index_body'>
+    <div class='form'>
+      <%= render 'search' %>
+      <%= render 'order_form' %>
+    </div>
+    <table class='task_table'>
+      <tr class='task_tr'>
+        <th class='task_th_id'>ID</th>
+        <th class='task_th_title'>タイトル</th>
+        <th class='task_th_deadline'>終了期限</th>
+        <th class='task_th_status'>ステータス</th>
+        <th class='task_th_priority'>優先順位</th>
+      </tr>
+      <% @tasks.each do |task| %>
+        <tr class='task_tr'>
+          <td class='task_id'><%= task.id %></td>
+          <td class='task_title'>
+            <%= link_to task.title, task_path(task.id) %>
+          </td>
+          <td class='task_deadline'><%= l task.deadline, format: :short %></td>
+          <td class='task_status'><%= I18n.t("enums.task.status.#{task.status}") %></td>
+          <td class='task_priority'><%= I18n.t("enums.task.priority.#{task.priority}") %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @tasks %>
+  </div>

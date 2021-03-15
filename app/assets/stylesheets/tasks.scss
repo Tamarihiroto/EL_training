@@ -81,3 +81,62 @@ a{
   margin: 20px;
   color: white;
 }
+
+// index
+
+.index_body{
+  width: 727px;
+  margin-left: calc(60vw - 727px / 2);
+}
+
+.form{
+  display: flex;
+}
+
+.task_table{
+  margin: 30px 0;
+  background-color: white;
+  border-radius: 5px;
+}
+
+table{
+  border-spacing: 0;
+}
+
+.task_th_id{
+  border-radius: 5px 0 0 0;
+}
+
+.task_th_priority{
+  border-radius: 0 5px 0 0;
+}
+
+.task_th_title, .task_title{
+  width: 200px;
+  overflow: hidden;
+}
+
+.pagination {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px;
+  font-size: 12px;
+  background-color: #CCC;
+  border-radius: 30px;
+  display: block;
+  justify-content: center;
+  translate: 50% 50%;
+}
+
+.pagination>span {
+  margin-right: 10px;
+  border-radius: 20px;
+}
+
+.page.current{
+  padding: 5px 4px 5px 6px;
+  border-radius: 15px;
+  background-color: #666;
+  color: white;
+}
