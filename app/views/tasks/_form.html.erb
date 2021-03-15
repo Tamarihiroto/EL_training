@@ -1,4 +1,7 @@
+<div class='task_form'>
 <%= form_with model: @task, local: true do |form| %>
+  <h2 class='form_list_title'><%= form_title %></h2>
+  <div class='form_list'>
   <ul class="error_message_list">
     <% if @task.errors.any? %>
       <% @task.errors.full_messages.each do |message| %>
@@ -6,15 +9,17 @@
       <% end %>
     <% end %>
   </ul>
-  <%= form.label :title, 'タイトル' %>
-  <%= form.text_field :title %>
-  <%= form.label :content, '内容' %>
-  <%= form.text_field :content %>
-  <%= form.label :deadline, '終了期限' %>
-  <%= form.datetime_field :deadline, {} %>
-  <%= form.label :status, 'ステータス' %>
-  <%= form.select :status, show_japanese_choices(Task.statuses, 'status') %>
-  <%= form.label :priority, '優先順位' %>
-  <%= form.select :priority, show_japanese_choices(Task.priorities, 'priority')%>
-  <%= form.submit "完了" %>
+    <%= form.label :title, 'タイトル' %>
+    <%= form.text_field :title, class: 'form_title', placeholder: 'タイトルを入れてください' %>
+    <%= form.label :content, '内容' %>
+    <%= form.text_area :content, class: 'form_content', placeholder: '内容を入れてください' %>
+    <%= form.label :deadline, '終了期限' %>
+    <%= form.datetime_field :deadline, {} %>
+    <%= form.label :status, 'ステータス' %>
+    <%= form.select :status, show_japanese_choices(Task.statuses, 'status') %>
+    <%= form.label :priority, '優先順位' %>
+    <%= form.select :priority, show_japanese_choices(Task.priorities, 'priority')%>
+    <%= form.submit submit_text ,class:'form_submit'%>
+  </div>
 <% end %>
+</div>

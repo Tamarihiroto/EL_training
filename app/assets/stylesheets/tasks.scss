@@ -189,3 +189,88 @@ table{
   padding: 9px 14px;
   border: none;
 }
+
+// form
+
+.error_message{
+  font-size: 15px;
+  color: red;
+  margin: 10px 0;
+}
+
+.task_form{
+  width: 727px;
+  margin: 30px calc(60vw - 727px / 2);
+  padding-bottom: 30px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.form_list_title{
+  padding: 10px 0 10px 30px;
+  background-color: #333;
+  border-radius: 5px 5px 0 0;
+  color: white;
+}
+
+.form_list{
+  width: 727px;
+  margin: 0 30px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_list>input, textarea, select{
+  border: solid 1px #DDD;
+  border-radius: 5px;
+}
+
+.form_list>input:not(.form_title, #task_deadline){
+  margin-top: 15px;
+  border: none;
+  border-radius: 25px;
+}
+
+.form_list>label{
+  margin: 15px 0 5px 0;
+  color: #888;
+  font-size: 12px;
+}
+
+.field_with_errors>input, textarea, select{
+  margin-top: 5px;
+  border: solid 1px #DDD;
+  border-radius: 5px;
+}
+
+.field_with_errors>label{
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 15px 0 5px 0;
+}
+
+.form_title, #task_deadline, #task_status, #task_priority{
+  height: 30px;
+  width: 400px;
+}
+
+.form_content{
+  height: 100px;
+  width: 400px;
+}
+
+.form_submit{
+  text-align: left;
+  padding: 10px 20px;
+  background-color: #333;
+  font-size: 12px;
+  color: white;
+  width: fit-content;
+  font-weight: bold;
+  &:hover{
+    opacity: 0.7;
+  }
+}
