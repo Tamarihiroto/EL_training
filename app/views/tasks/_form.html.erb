@@ -12,5 +12,9 @@
   <%= form.text_field :content %>
   <%= form.label :deadline, '終了期限' %>
   <%= form.datetime_field :deadline, {} %>
-  <%= form.submit '完了' %>
+  <%= form.label :status, 'ステータス' %>
+  <%= form.select :status, show_japanese_choices(Task.statuses, 'status') %>
+  <%= form.label :priority, '優先順位' %>
+  <%= form.select :priority, show_japanese_choices(Task.priorities, 'priority')%>
+  <%= form.submit "完了" %>
 <% end %>
