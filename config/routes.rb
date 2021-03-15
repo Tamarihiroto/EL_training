@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     get :search, on: :collection
     get :sort_by_order, on: :collection
   end
+
+  resources :users
 end
