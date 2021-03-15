@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+*{
+  margin: 0;
+}
+
+.task_flash{
+  background-color: #333;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  margin: 10px calc(60vw - 727px / 2);
+  position: absolute;
+  width: 727px;
+  opacity: 0.6;
+}
+
+#task_flash{
+  -moz-animation: cssAnimation 0s ease-in 3s forwards;
+  -webkit-animation: cssAnimation 0s ease-in 3s forwards;
+  -o-animation: cssAnimation 0s ease-in 3s forwards;
+  animation: cssAnimation 0s ease-in 3s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+  to {
+    width:0;
+    height:0;
+    overflow:hidden;
+  }
+}
+@-webkit-keyframes cssAnimation {
+  to {
+    width:0;
+    height:0;
+    visibility:hidden;
+  }
+}
