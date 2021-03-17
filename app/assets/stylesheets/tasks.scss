@@ -108,6 +108,30 @@ a{
 
   }
 
+  // search_form
+
+  &-search{
+    margin: 10px 0;
+
+    &__form-title{
+      margin-bottom: 10px;
+    }
+
+    &__label{
+      display: none;
+    }
+
+    &__title{
+      width: 160px;
+      padding: 9px 14px;
+    }
+
+    select{
+      padding: 9px 14px;
+      border: none;
+    }
+  }
+
   // order_form
 
   &-order-form{
@@ -160,30 +184,6 @@ a{
     background-color: #666;
     color: #fff;
   }
-}
-
-// search_form
-
-.search_name{
-  margin-bottom: 10px;
-}
-
-.search_form{
-  margin: 10px 0
-}
-
-.search_label{
-  display: none;
-}
-
-.search_title{
-  width: 160px;
-  padding: 9px 14px;
-}
-
-#status{
-  padding: 9px 14px;
-  border: none;
 }
 
 // form
