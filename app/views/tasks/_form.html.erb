@@ -19,7 +19,7 @@
       <%= form.select :status, show_japanese_choices(Task.statuses, 'status') %>
       <%= form.label :priority, '優先順位' %>
       <%= form.select :priority, show_japanese_choices(Task.priorities, 'priority')%>
-      <%= form.submit submit_text ,class:'form-list__submit'%>
+      <%= form.submit submit_text ,class:'button'%>
     </div>
   <% end %>
 </main>

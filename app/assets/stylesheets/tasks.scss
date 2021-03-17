@@ -145,12 +145,6 @@ a{
       display: none;
     }
 
-    &__submit{
-      padding: 7px 14px;
-      background-color: #333;
-      color: #fff;
-    }
-
     select{
       padding: 9px 14px;
       border: none;
@@ -258,7 +252,7 @@ a{
     border: solid 1px #DDD;
     border-radius: 5px;
 
-    &:is(.form-list__submit){
+    &:is(.button){
       margin-top: 15px;
       border: none;
       width: fit-content;
@@ -274,17 +268,6 @@ a{
     margin: 15px 0 5px 0;
     color: #888;
     font-size: 12px;
-  }
-  
-  &__submit{
-    padding: 7px 14px;
-    background-color: #333;
-    color: #fff;
-    text-align: left;
-    font-weight: bold;
-    &:hover{
-      opacity: 0.7;
-    }
   }
 }
 
