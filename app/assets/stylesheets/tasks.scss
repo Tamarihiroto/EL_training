@@ -107,6 +107,31 @@ a{
     }
 
   }
+
+  // order_form
+
+  &-order-form{
+    margin: 10px 0 10px 40px;
+
+    &__title{
+      margin-bottom: 10px;
+    }
+
+    &__label{
+      display: none;
+    }
+
+    &__submit{
+      padding: 7px 14px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    select{
+      padding: 9px 14px;
+      border: none;
+    }
+  }
 }
 
 .pagination {
@@ -157,31 +182,6 @@ a{
 }
 
 #status{
-  padding: 9px 14px;
-  border: none;
-}
-
-// order_form
-
-.order_name{
-  margin: 0 0 10px 30px;
-}
-
-.order_form{
-  margin: 10px 0 10px 25px;
-}
-
-.order_label{
-  display: none;
-}
-
-.submit{
-  padding: 7px 14px;
-  background-color: #333;
-  color: #fff;
-}
-
-#sort_data{
   padding: 9px 14px;
   border: none;
 }
