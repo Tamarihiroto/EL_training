@@ -1,5 +1,5 @@
 <%= render 'task_template' %>
-  <div class='task_show'>
+  <main class='tasks-show'>
     <ul class="error_message_list">
       <% if @task %>
         <% @task.errors.full_messages.each do |message| %>
@@ -7,15 +7,15 @@
         <% end %>
       <% end %>
     </ul>
-    <h2 class='show_title' id='show_title'><%= @task.title%></h2>
-    <label for='show_content'>内容</label>
-    <p class='show_content' id='show_content'><%= @task.content%></p>
-    <label for='show_deadline'>終了期限</label>
-    <p class='show_deadline' id='show_deadline'><%= l @task.deadline, format: :short %></p>
-    <label for='show_status'>ステータス</label>
-    <p class='show_status' id='show_status'><%= I18n.t("enums.task.status.#{@task.status}") %></p>
-    <label for='show_priority'>優先順位</label>
-    <p class='show_priority' id='show_priority'><%= I18n.t("enums.task.priority.#{@task.priority}") %></p>
-    <%= link_to "編集", edit_task_path(params[:id]), class: 'show_edit' %>
-    <%= link_to "削除", task_path(@task.id), { method: "delete" } %>
-  </div>
+    <h2 class='tasks-show__title mb-15'><%= @task.title%></h2>
+    <p class='tasks-show__label'>内容</p>
+    <p class='tasks-show__content'><%= @task.content%></p>
+    <p class='tasks-show__label'>終了期限</p>
+    <p class='tasks-show_deadline'><%= l @task.deadline, format: :short %></p>
+    <p class='tasks-show__label'>ステータス</p>
+    <p class='tasks-show__status'><%= I18n.t("enums.task.status.#{@task.status}") %></p>
+    <p class='tasks-show__label'>優先順位</p>
+    <p class='tasks-show__priority'><%= I18n.t("enums.task.priority.#{@task.priority}") %></p>
+    <%= link_to "編集", edit_task_path(params[:id]), class: 'button ml-30' %>
+    <%= link_to "削除", task_path(@task.id), { method: "delete", class: 'button ml-30' } %>
+  </main>
