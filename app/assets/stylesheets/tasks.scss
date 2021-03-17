@@ -152,7 +152,7 @@
   }
 }
 
-.pagination {
+.pagination{
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
@@ -164,9 +164,13 @@
   justify-content: center;
   translate: 50% 50%;
 
-  &>span {
+  span{
     margin-right: 10px;
     border-radius: 20px;
+  }
+
+  a{
+    color: #666;
   }
 }
 
