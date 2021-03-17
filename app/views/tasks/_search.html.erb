@@ -1,8 +1,10 @@
-<p>検索</p>
-<%= form_with url: search_tasks_path, method: :get, local: true do |form| %>
-  <%= form.label :title, 'タイトル' %>
-  <%= form.text_field :title %>
-  <%= form.label :status, 'ステータス' %>
-  <%= form.select :status, Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}, include_blank: true %>
-  <%= form.submit :search %>
-<% end %>
+<div class='tasks-search'>
+  <h4 class='tasks-search__form-title'>検索</h4>
+  <%= form_with url: search_tasks_path, method: :get, local: true do |form| %>
+    <%= form.label :title, 'タイトル', class: 'tasks-search__label' %>
+    <%= form.text_field :title, class: 'tasks-search__title', placeholder: 'タイトルを入れてください'  %>
+    <%= form.label :status, 'ステータス', class: 'tasks-search__label' %>
+    <%= form.select :status, Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}, include_blank: true, placeholder: 'ステータスを選択してください'  %>
+    <%= form.submit :search, value: '検索', class: 'button' %>
+  <% end %>
+</div>

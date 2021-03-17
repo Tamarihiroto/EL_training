@@ -1,3 +1,241 @@
 // Place all the styles related to the Task controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// task
+
+
+//side_bar
+
+.header{
+  &__nav{
+    height: 100vh;
+    width: 20vw;
+    background-color: #333;
+    position: fixed;
+
+    &--title{
+      padding: 20px;
+      color: #fff;
+      border-bottom: solid 1px #aaa;
+    }
+
+    &--item{
+      margin: 20px;
+      color: #fff;
+    }
+  }
+}
+
+// index
+
+.tasks{
+  width: 727px;
+  margin-left: calc(60vw - 727px / 2);
+  &__form{
+    display: flex;
+  }
+
+  &__table{
+    margin: 30px 0;
+    background-color: #fff;
+    border-radius: 5px;
+
+    &--th-id{
+      border-radius: 5px 0 0 0;
+    }
+
+    &--th-priority{
+      border-radius: 0 5px 0 0;
+    }
+  }
+
+  // task_template
+
+  &-body{
+    display: flex;
+  }
+
+  // form
+
+  &-form{
+    width: 727px;
+    margin: 30px calc(60vw - 727px / 2);
+    padding-bottom: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+  
+    &__title{
+      padding: 10px 0 10px 30px;
+      background-color: #333;
+      border-radius: 5px 5px 0 0;
+      color: #fff;
+    }
+  }
+
+  // search_form
+
+  &-search{
+    margin: 10px 0;
+
+    &__form-title{
+      margin-bottom: 10px;
+    }
+
+    &__label{
+      display: none;
+    }
+
+    &__title{
+      width: 160px;
+      padding: 9px 14px;
+    }
+
+    select{
+      padding: 9px 14px;
+      border: none;
+    }
+  }
+
+  // order_form
+
+  &-order-form{
+    margin: 10px 0 10px 40px;
+
+    &__title{
+      margin-bottom: 10px;
+    }
+
+    &__label{
+      display: none;
+    }
+
+    select{
+      padding: 9px 14px;
+      border: none;
+    }
+  }
+
+  // show
+
+  &-show{
+    margin: 30px calc(60vw - 727px / 2);
+    width: 727px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    padding-bottom: 30px;
+  
+    &__title{
+      padding: 10px 0 10px 30px;
+      background-color: #333;
+      color: #fff;
+    }
+  
+    &__label{
+      padding: 10px 0 10px 30px;
+      color: #888;
+      font-size: 12px;
+    }
+  
+    &__content{
+      word-wrap: break-word;
+    }
+  
+    p{
+      &:not(.tasks-show__label){
+        margin-bottom: 10px;
+        padding: 0 30px 10px 30px;
+      }
+    }
+  }
+}
+
+.pagination{
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px;
+  font-size: 12px;
+  background-color: #ccc;
+  border-radius: 30px;
+  display: block;
+  justify-content: center;
+  translate: 50% 50%;
+
+  span{
+    margin-right: 10px;
+    border-radius: 20px;
+  }
+
+  a{
+    color: #666;
+  }
+}
+
+
+.page{
+  &.current{
+    padding: 5px 4px 5px 6px;
+    border-radius: 15px;
+    background-color: #666;
+    color: #fff;
+  }
+}
+
+// form
+
+.error-message{
+  font-size: 15px;
+  color: red;
+  margin: 10px 0;
+}
+
+.form-list{
+  width: 727px;
+  margin: 0 30px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+
+  input, textarea, select{
+    width: 400px;
+    height: 30px;
+    margin-top: 5px;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+
+    &:is(.button){
+      margin-top: 15px;
+      border: none;
+      width: fit-content;
+      height: fit-content;
+    }
+
+    &:is(.form-list__content){
+      height: 100px;
+    }
+  }
+
+  label{
+    margin: 15px 0 5px 0;
+    color: #888;
+    font-size: 12px;
+  }
+}
+
+.field_with_errors{
+  input, textarea, select{
+    margin-top: 5px;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+  }
+
+  label{
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 15px 0 5px 0;
+  }
+}
