@@ -1,12 +1,13 @@
-<%= form_with url: sort_by_order_tasks_path, method: :get, local: true do |form| %>
-  <%= form.label :sort_data, '並び替え' %>
-  <%= form.select :sort_data, [
-    ['作成日時が早い', 'created_at,asc'],
-    ['作成日時が遅い', 'created_at,desc'],
-    ['終了期限が近い', 'deadline,asc'],
-    ['終了期限が遅い', 'deadline,desc'],
-    ['優先度が高い', 'priority,asc'],
-    ['優先度が低い', 'priority,desc']
-  ]%>
-  <%= form.submit '並び替え' %>
-<% end %>
+<div class='tasks-order-form'>
+  <h4 class='tasks-order-form__title'>並び替え</h4>
+  <%= form_with url: sort_by_order_tasks_path, method: :get, local: true do |form| %>
+    <%= form.label :sort_data, '並び替え', class: 'tasks-order-form__label' %>
+    <%= form.select :sort_data, [
+      ['作成日時が早い', 'created_at,asc'],
+      ['作成日時が遅い', 'created_at,desc'],
+      ['終了期限が近い', 'deadline,asc'],
+      ['終了期限が遅い', 'deadline,desc']
+    ]%>
+    <%= form.submit '並び替え', class: 'button' %>
+  <% end %>
+</div>
