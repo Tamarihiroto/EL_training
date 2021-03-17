@@ -4,9 +4,6 @@
 
 // task
 
-.tasks-body{
-  display: flex;
-}
 
 //side_bar
 
@@ -51,7 +48,30 @@
     &--th-priority{
       border-radius: 0 5px 0 0;
     }
+  }
 
+  // task_template
+
+  &-body{
+    display: flex;
+  }
+
+  // form
+
+  &-form{
+    width: 727px;
+    margin: 30px calc(60vw - 727px / 2);
+    padding-bottom: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+  
+    &__title{
+      padding: 10px 0 10px 30px;
+      background-color: #333;
+      border-radius: 5px 5px 0 0;
+      color: #fff;
+    }
   }
 
   // search_form
@@ -166,22 +186,6 @@
   font-size: 15px;
   color: red;
   margin: 10px 0;
-}
-
-.tasks-form{
-  width: 727px;
-  margin: 30px calc(60vw - 727px / 2);
-  padding-bottom: 30px;
-  background-color: #fff;
-  border-radius: 5px;
-  overflow: hidden;
-
-  &__title{
-    padding: 10px 0 10px 30px;
-    background-color: #333;
-    border-radius: 5px 5px 0 0;
-    color: #fff;
-  }
 }
 
 .form-list{
