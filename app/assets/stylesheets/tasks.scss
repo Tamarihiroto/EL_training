@@ -188,88 +188,88 @@ a{
 
 // form
 
-.error_message{
+.error-message{
   font-size: 15px;
   color: red;
   margin: 10px 0;
 }
 
-.task_form{
+.tasks-form{
   width: 727px;
   margin: 30px calc(60vw - 727px / 2);
   padding-bottom: 30px;
   background-color: #fff;
   border-radius: 5px;
   overflow: hidden;
+
+  &__title{
+    padding: 10px 0 10px 30px;
+    background-color: #333;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+  }
 }
 
-.form_list_title{
-  padding: 10px 0 10px 30px;
-  background-color: #333;
-  border-radius: 5px 5px 0 0;
-  color: #fff;
-}
-
-.form_list{
+.form-list{
   width: 727px;
   margin: 0 30px;
   font-size: 15px;
   display: flex;
   flex-direction: column;
-}
 
-.form_list>input, textarea, select{
-  border: solid 1px #DDD;
-  border-radius: 5px;
-}
+  input, textarea, select{
+    width: 400px;
+    height: 30px;
+    margin-top: 5px;
+    border: solid 1px #DDD;
+    border-radius: 5px;
 
-.form_list>input:not(.form_title, #task_deadline){
-  margin-top: 15px;
-  border: none;
-  border-radius: 25px;
-}
+    &:is(.form-list__submit){
+      margin-top: 15px;
+      border: none;
+      width: fit-content;
+      height: fit-content;
+    }
 
-.form_list>label{
-  margin: 15px 0 5px 0;
-  color: #888;
-  font-size: 12px;
-}
+    &:is(.form-list__content){
+      height: 100px;
+    }
+  }
 
-.field_with_errors>input, textarea, select{
-  margin-top: 5px;
-  border: solid 1px #DDD;
-  border-radius: 5px;
-}
-
-.field_with_errors>label{
-  color: red;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 15px 0 5px 0;
-}
-
-.form_title, #task_deadline, #task_status, #task_priority{
-  height: 30px;
-  width: 400px;
-}
-
-.form_content{
-  height: 100px;
-  width: 400px;
-}
-
-.form_submit{
-  text-align: left;
-  padding: 10px 20px;
-  background-color: #333;
-  font-size: 12px;
-  color: #fff;
-  width: fit-content;
-  font-weight: bold;
-  &:hover{
-    opacity: 0.7;
+  label{
+    margin: 15px 0 5px 0;
+    color: #888;
+    font-size: 12px;
+  }
+  
+  &__submit{
+    padding: 7px 14px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    &:hover{
+      opacity: 0.7;
+    }
   }
 }
+
+.field_with_errors{
+  input, textarea, select{
+    margin-top: 5px;
+    border: solid 1px #DDD;
+    border-radius: 5px;
+  }
+
+  label{
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 15px 0 5px 0;
+  }
+}
+
+
 
 //show
 
