@@ -57,7 +57,7 @@
 
       &--create{
         position: absolute;
-        right: 55px;
+        right: $space;
         font-size: 60px !important;
       }
     }
@@ -70,6 +70,11 @@
     background-color: $base-color-white;
     border-radius: 90px 90px 0 0;
     font-size: $base-font-size;
+
+    &__header{
+      display: flex;
+      flex-direction: row;
+    }
 
     &__table{
       display: flex;
@@ -103,10 +108,20 @@
   }
 
   &__label-title{
-    margin-bottom: $space;
+    margin: 0 auto $space auto;
     text-align: center;
     font-weight: bold;
     color: $base-color;
+  }
+
+  // オプション
+  &-option{
+    &-icon{
+      font-size: 55px !important;
+      color: $base-color;
+      position: absolute;
+      right: $space;
+    }
   }
 
   // task_template
