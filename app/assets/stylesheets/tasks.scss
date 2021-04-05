@@ -1,6 +1,7 @@
 // Place all the styles related to the Task controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variable';
 
 // task
 
@@ -53,7 +54,7 @@
   // task_template
 
   &-body{
-    display: flex;
+    background-color: $base-color;
   }
 
   // form
@@ -62,7 +63,7 @@
     width: 727px;
     margin: 30px calc(60vw - 727px / 2);
     padding-bottom: 30px;
-    background-color: #fff;
+    background-color: $base-color-white;
     border-radius: 5px;
     overflow: hidden;
   
@@ -70,7 +71,7 @@
       padding: 10px 0 10px 30px;
       background-color: #333;
       border-radius: 5px 5px 0 0;
-      color: #fff;
+      color: $base-color-white;
     }
   }
 
@@ -122,7 +123,7 @@
   &-show{
     margin: 30px calc(60vw - 727px / 2);
     width: 727px;
-    background-color: #fff;
+    background-color: $base-color-white;
     border-radius: 5px;
     overflow: hidden;
     padding-bottom: 30px;
@@ -130,7 +131,7 @@
     &__title{
       padding: 10px 0 10px 30px;
       background-color: #333;
-      color: #fff;
+      color: $base-color-white;
     }
   
     &__label{
