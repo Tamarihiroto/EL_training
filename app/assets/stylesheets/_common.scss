@@ -1,3 +1,35 @@
+@import 'variable';
 
+.space{
+  &-t{
+    margin-top: $space;
+  }
+
+  &-r{
+    margin-right: $space;
+  }
+
+  &-b{
+    margin-bottom: $space;
+  }
+
+  &-l{
+    margin-left: $space;
+  }
+}
+
+.fw{
+  &-bold{
+    font-weight: bold;
+  }
+}
+
+.bg{
+  &-blue{
+    background-color: $base-color;
+  }
+
+  &-red{
+    background-color: $admin-color;
   }
 }
