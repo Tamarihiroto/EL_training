@@ -3,52 +3,110 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'variable';
 
-// task
-
-
-//side_bar
-
-.header{
-  &__nav{
-    height: 100vh;
-    width: 20vw;
-    background-color: #333;
-    position: fixed;
-
-    &--title{
-      padding: 20px;
-      color: #fff;
-      border-bottom: solid 1px #aaa;
-    }
-
-    &--item{
-      margin: 20px;
-      color: #fff;
-    }
-  }
-}
-
 // index
 
 .tasks{
-  width: 727px;
-  margin-left: calc(60vw - 727px / 2);
-  &__form{
-    display: flex;
+  // ステータスが完了時に打ち消し線
+  &-done{
+    text-decoration: line-through;
   }
 
-  &__table{
-    margin: 30px 0;
-    background-color: #fff;
-    border-radius: 5px;
-
-    &--th-id{
-      border-radius: 5px 0 0 0;
+  // 優先順位の色変更の際使用
+  &-priority{
+    &__high{
+      color: $base-color;
     }
 
-    &--th-priority{
-      border-radius: 0 5px 0 0;
+    &__middle{
+      color: $base-color-middle;
     }
+
+    &__low{
+      color: $base-color-light;
+    }
+  }
+  
+  // ヘッダーのメニュー
+  &-menu{
+    padding: $space;
+    
+    &__list{
+      display: flex;
+      flex-direction: row;
+
+      a{
+        color: $base-color-white;
+      }
+
+      &--hamburger{
+        font-size: 57px !important;
+      }
+
+      &--logout{
+        position: absolute;
+        right: 295px;
+        font-size: 57px !important;
+      }
+
+      &--search{
+        position: absolute;
+        margin-top: 3px;
+        right: 176px;
+        font-size: 55px !important;
+      }
+
+      &--create{
+        position: absolute;
+        right: 55px;
+        font-size: 60px !important;
+      }
+    }
+  }
+  
+  // タスク一覧
+  &-card{
+    padding: $space;
+    min-height: 100vh;
+    background-color: $base-color-white;
+    border-radius: 90px 90px 0 0;
+    font-size: $base-font-size;
+
+    &__table{
+      display: flex;
+      flex-direction: row;
+
+      &--title{
+        width: calc(100vw - 521px);
+        overflow-wrap: break-word;
+      }
+
+      &--status{
+        width: 55px;
+        height: auto;
+        margin-top: 7px;
+      }
+    }
+
+    &__create{
+      display: flex;
+      flex-direction: row;
+
+      &--icon{
+        font-size: 60px !important;
+        color: $base-color;
+      }
+    }
+
+    a{
+      color: $base-color-black;
+    }
+  }
+
+  &__label-title{
+    margin-bottom: $space;
+    text-align: center;
+    font-weight: bold;
+    color: $base-color;
   }
 
   // task_template
@@ -168,7 +226,7 @@
   }
 
   a{
-    color: #000000;
+    color: $base-color-black;
   }
 }
 
