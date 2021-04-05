@@ -10,7 +10,7 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body class='bg-blue'>
+  <body class='tasks-body'>
     <% if flash[:notice] %>
       <div class='task_flash'>
         <%= flash[:notice] %>
@@ -21,6 +21,9 @@
         <%= flash[:alert] %>
       </div>
     <% end %>
+    <%= render 'header'%>
+    <main class='tasks-card'>
     <%= yield %>
+    </main>
   </body>
 </html>
