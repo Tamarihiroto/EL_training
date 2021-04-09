@@ -1,36 +1,37 @@
-<%= render 'task_template' %>
-  <main class='tasks'>
-    <section class='tasks__form'>
-      <%= render 'search' %>
-      <%= render 'order_form' %>
+  <div class='tasks-card__header'>
+    <p class='tasks__label-title'>ラベル名</p>
+    <i class="fas fa-ellipsis-h tasks-option-icon"></i>
+  </div>
+  <%# タスク一覧 start %>
+  <% @tasks.each do |task| %>
+    <%= link_to task_path(task.id) do %>
+      <ul class='tasks-card__table space-b'>
+        <%# タスクのステータス %>
+        <li class='space-r'>
+          <img class='tasks-card__table--status' src="/status_<%= task.status %>.svg" alt=''>
+        </li>
+        <%# タスクのタイトル %>
+        <li class="tasks-card__table--title tasks-<%= task.status %> space-r">
+          <%= task.title %>
+        </li>
+        <%# タスクの終了期限 %>
+        <li class='space-r'>
+          <%= l task.deadline, format: :short %>
+        </li>
+        <%# タスクの優先順位 %>
+        <li class="tasks-priority__<%= task.priority %> fw-bold">
+          <%= I18n.t("enums.task.priority.#{task.priority}") %>
+        </li>
+      </ul>
+    <% end %>
+  <% end %>
+  <%# タスク一覧 end %>
+  <%= link_to new_task_path do %>
+    <section class='tasks-card__create space-b'>
+      <i class='fas fa-plus tasks-card__create--icon space-r'></i>
+      <p class='fw-bold'>タスクを追加する</p>
     </section>
-    <section>
-      <table class='tasks__table'>
-        <thead>
-          <tr>
-            <th class='tasks__table--th-id w-32'>ID</th>
-            <th class='w-200'>タイトル</th>
-            <th>終了期限</th>
-            <th>ステータス</th>
-            <th class='tasks__table--th-priority'>優先順位</th>
-          </tr>
-        <thead>
-        <tbody>
-          <% @tasks.each do |task| %>
-            <tr>
-              <td class='w-32'><%= task.id %></td>
-              <td class='w-200'>
-                <%= link_to task.title, task_path(task.id) %>
-              </td>
-              <td><%= l task.deadline, format: :short %></td>
-              <td><%= I18n.t("enums.task.status.#{task.status}") %></td>
-              <td><%= I18n.t("enums.task.priority.#{task.priority}") %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </section>
-    <section>
-      <%= paginate @tasks %>
-    </section>
-  </main>
+  <% end %>
+  <section>
+    <%= paginate @tasks %>
+  </section>
