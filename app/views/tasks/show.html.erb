@@ -81,34 +81,4 @@
 <% end %>
 <%# タスク詳細 end %>
 
-<script>
-  // 完了ボタンを非表示
-  document.getElementById('tasks-form-button').style.display = "none";
-
-  // 完了ボタンを表示 start
-  // タイトルが変更されると完了ボタンが表示
-  document.getElementById("task_title").onchange = function() {
-    document.getElementById('tasks-form-button').style.display = "";
-  }
-
-  // 内容が変更されると完了ボタンが表示
-  document.getElementById("task_content").onchange = function() {
-    document.getElementById('tasks-form-button').style.display = "";
-  }
-
-  // 期限が変更されると完了ボタンが表示
-  document.getElementById("task_deadline").onchange = function() {
-    document.getElementById('tasks-form-button').style.display = "";
-  }
-
-  // 優先順位が変更されると完了ボタンが表示
-  document.getElementById("task_priority").onchange = function() {
-    document.getElementById('tasks-form-button').style.display = "";
-  }
-
-  // ステータスが変更されると完了ボタンが表示
-  document.getElementById("task_status").onchange = function() {
-    document.getElementById('tasks-form-button').style.display = "";
-  }
-  // 完了ボタンを表示 end
-</script>
+<%= javascript_include_tag 'tasks' %>
