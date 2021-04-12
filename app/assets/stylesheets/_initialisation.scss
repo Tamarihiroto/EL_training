@@ -1,5 +1,8 @@
+@import 'variable';
+
 *{
   margin: 0;
+  font-family: "MS Pゴシック" ;
 }
 
 h1, h2, h3, h4{
@@ -16,6 +19,11 @@ a{
   text-decoration: none;
 }
 
+p{
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
 ul, li{
   margin-block-start: 0;
   margin-block-end: 0;
@@ -23,3 +31,19 @@ ul, li{
   list-style: none;
 }
 
+input, select, textarea{
+  font-size: $base-font-size;
+  border: none;
+  appearance: none;
+  white-space: normal;
+  word-break: break-all;
+  // 矢印の消去
+  &::-ms-expand {
+    display: none;
+  }
+
+  // カレンダーのアイコンの消去
+  &[type="date"]::-webkit-calendar-picker-indicator {
+    background: none;
+  }
+}

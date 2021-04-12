@@ -128,21 +128,91 @@
     background-color: $base-color;
   }
 
-  // form
+  // タスク画面
+  &-show{
+    // タスク詳細のアイコン
+    &__icon{
+      &--title{
+        font-size: 57px !important;
+      }
 
-  &-form{
-    width: 727px;
-    margin: 30px calc(60vw - 727px / 2);
-    padding-bottom: 30px;
-    background-color: $base-color-white;
-    border-radius: 5px;
-    overflow: hidden;
-  
+      &--deadline{
+        font-size: 57px !important;
+      }
+
+      &--content{
+        margin-top: 10px;
+        font-size: 53px !important;
+      }
+
+      &--status{
+        font-size: 53px !important;
+      }
+
+      &--priority{
+        font-size: 48px !important;
+      }
+
+      &--destroy{
+        font-size: 66px !important;
+      }
+    }
+
     &__title{
-      padding: 10px 0 10px 30px;
-      background-color: #333;
-      border-radius: 5px 5px 0 0;
-      color: $base-color-white;
+      width: calc(100vw - 215px);
+      overflow-wrap: break-word;
+      white-space: pre-line;
+      word-break: break-all;
+    }
+
+    &__content{
+      width: calc(100vw - 215px);
+      font-size: 33px;
+      overflow-wrap: break-word;
+    }
+
+    &__destroy{
+      margin-top: 138px;
+    }
+
+    // タスク詳細全体のアイコン
+    i{
+      color: $base-color;
+      margin-right: $space;
+    }
+
+    li{
+      display: flex;
+      flex-direction: row;
+      margin-bottom: $space;
+    }
+
+  }
+
+  // 戻るのアイコン、文言
+  &-back{
+    display: flex;
+    flex-direction: row;
+    color: $base-color;
+    position: absolute;
+    &__icon{
+      font-size: 65px !important;
+      margin-right: 20px;
+    }
+  }
+
+  &-select{
+    display: flex;
+    flex-direction: row;
+
+    // selectタグの矢印
+    &__bar{
+      width: 20px;
+      height: 20px;
+      margin: 23px 0 0 30px;
+      border-bottom: $base-color-black 5px solid;
+      border-right: $base-color-black 5px solid;
+      transform:rotate(45deg)translateY(-30%);
     }
   }
 
@@ -188,42 +258,7 @@
       border: none;
     }
   }
-
-  // show
-
-  &-show{
-    margin: 30px calc(60vw - 727px / 2);
-    width: 727px;
-    background-color: $base-color-white;
-    border-radius: 5px;
-    overflow: hidden;
-    padding-bottom: 30px;
-  
-    &__title{
-      padding: 10px 0 10px 30px;
-      background-color: #333;
-      color: $base-color-white;
-    }
-  
-    &__label{
-      padding: 10px 0 10px 30px;
-      color: #888;
-      font-size: 12px;
-    }
-  
-    &__content{
-      word-wrap: break-word;
-    }
-  
-    p{
-      &:not(.tasks-show__label){
-        margin-bottom: 10px;
-        padding: 0 30px 10px 30px;
-      }
-    }
-  }
 }
-
 .pagination{
   width: fit-content;
   margin-left: auto;
@@ -254,58 +289,54 @@
   }
 }
 
-// form
+// input_ボタン
+.button{
+  &-blue{
+    padding: 20px 40px;
+    background-color: $base-color !important;
+    color: $base-color-white;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 50px;
+  }
 
+  &-white{
+    padding: 20px 40px;
+    background-color: $base-color-white;
+    color: $base-color;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 50px;
+  }
+}
+
+#overlay{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+// エラーメッセージ
 .error-message{
-  font-size: 15px;
-  color: red;
-  margin: 10px 0;
+  font-size: 27px;
+  color: $admin-color;
 }
 
-.form-list{
-  width: 727px;
-  margin: 0 30px;
-  font-size: 15px;
-  display: flex;
-  flex-direction: column;
-
-  input, textarea, select{
-    width: 400px;
-    height: 30px;
-    margin-top: 5px;
-    border: solid 1px #ddd;
-    border-radius: 5px;
-
-    &:is(.button){
-      margin-top: 15px;
-      border: none;
-      width: fit-content;
-      height: fit-content;
-    }
-
-    &:is(.form-list__content){
-      height: 100px;
-    }
-  }
-
-  label{
-    margin: 15px 0 5px 0;
-    color: #888;
-    font-size: 12px;
-  }
-}
-
+// フォームのエラー時の表示
 .field_with_errors{
   input, textarea, select{
-    margin-top: 5px;
-    border: solid 1px #ddd;
-    border-radius: 5px;
+    color: $admin-color;
+    &::placeholder {
+      padding: 0;
+      color: $admin-color;
+    }
   }
+}
 
-  label{
-    color: red;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 15px 0 5px 0;
-  }
+#tasks-form-button{
+  display: none;
 }
