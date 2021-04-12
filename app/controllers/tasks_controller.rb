@@ -28,10 +28,9 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to tasks_path, notice: t('notice.update')
+      redirect_to tasks_path
     else
-      flash.now[:alert] = t('alert.update')
-      render :edit
+      render :show
     end
   end
   
