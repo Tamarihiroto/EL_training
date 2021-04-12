@@ -7,7 +7,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <script src="https://kit.fontawesome.com/5f5b2a7314.js" crossorigin="anonymous"></script>
-    <%= javascript_include_tag 'application' %>
   </head>
 
   <body class='tasks-body'>
@@ -16,4 +15,5 @@
       <%= yield %>
     </main>
   </body>
+  <%= javascript_include_tag 'application' %>
 </html>

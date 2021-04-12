@@ -4,15 +4,17 @@ function showDoneButton(idName) {
   document.getElementById(idName).style.display = 'block';
 }
 
+// 内容が変更されると完了ボタンが表示
+document.getElementById('task_content').onchange = function() {
+  showDoneButton('tasks-form-button')
+}
+
 // タイトルが変更されると完了ボタンが表示
 document.getElementById('task_title').onchange = function() {
   showDoneButton('tasks-form-button')
 }
 
-// 内容が変更されると完了ボタンが表示
-document.getElementById('task_content').onchange = function() {
-  showDoneButton('tasks-form-button')
-}
+
 
 // 期限が変更されると完了ボタンが表示
 document.getElementById('task_deadline').onchange = function() {
