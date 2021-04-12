@@ -216,56 +216,6 @@
     }
   }
 
-  // form
-
-  &-form{
-    padding: 55px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 90px 90px 0 0;
-    background-color: $base-color-white;
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
-
-    &__title{
-      width: calc(100vw - 180px);
-    }
-
-    &__deadline{
-      width: 100px;
-      overflow: hidden;
-    }
-
-    &__top{
-      margin-bottom: $space;
-    }
-
-    label{
-      display: none;
-    }
-
-    input{
-      padding: 20px 35px;
-      background-color: $form-background-color;
-      font-size: $form-font-size;
-      border-radius: 60px;
-    }
-
-    select{
-      padding: 30px 35px;
-      background-color: $form-background-color;
-      font-size: $form-font-size;
-      border-radius: 60px;
-    }
-
-    .field_with_errors input, .field_with_errors textarea, .field_with_errors select{
-      color: $admin-color;
-      border: solid $admin-color;
-      background-color: #FFEFEF;
-    }
-  }
-
   // search_form
 
   &-search{
