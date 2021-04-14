@@ -18,6 +18,11 @@
   }
 }
 
+.right{
+  position: absolute;
+  right: $space;
+}
+
 .fw{
   &-bold{
     font-weight: bold;
