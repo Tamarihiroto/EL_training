@@ -1,39 +1,35 @@
-.w-200{
-  width: 200px;
-}
+@import 'variable';
 
-.w-34{
-  width: 32px;
-}
-
-.ml-30{
- margin-left: 30px; 
-}
-
-.mb-15{
-  margin-bottom: 15px;
-}
-
-.font-middle{
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.button{
-  padding: 7px 14px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  text-align: left;
-  font-size: 13px;
-  font-weight: bold;
-
-  &:hover{
-    opacity: 0.7;
+.space{
+  &-t{
+    margin-top: $space;
   }
 
-  &:not(input){
-    padding: 10px 15px;
+  &-r{
+    margin-right: $space;
+  }
+
+  &-b{
+    margin-bottom: $space;
+  }
+
+  &-l{
+    margin-left: $space;
+  }
+}
+
+.fw{
+  &-bold{
+    font-weight: bold;
+  }
+}
+
+.bg{
+  &-blue{
+    background-color: $base-color;
+  }
+
+  &-red{
+    background-color: $admin-color;
   }
 }

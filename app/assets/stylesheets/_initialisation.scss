@@ -1,9 +1,8 @@
+@import 'variable';
+
 *{
   margin: 0;
-}
-
-body{
-  background-color: #eee;
+  font-family: "MS Pゴシック" ;
 }
 
 h1, h2, h3, h4{
@@ -11,33 +10,18 @@ h1, h2, h3, h4{
   margin-block-end: 0;
 }
 
-table{
-  border-spacing: 0;
-}
-
 
 input, select{
   border: none;
-  border-radius: 5px;
-  &:hover {
-    opacity: 0.7;
-  }
-}
-
-th, td {
-  padding: 20px 25px;
-  border-bottom: solid 10px #eee;
-  border-collapse:  collapse;
-  text-align: left;
-
-  &:not(td){
-    background-color: #333;
-    color: #fff;
-  }
 }
 
 a{
   text-decoration: none;
+}
+
+p{
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 ul, li{
@@ -45,8 +29,21 @@ ul, li{
   margin-block-end: 0;
   padding-inline-start: 0;
   list-style: none;
+}
 
-  &:not(ul){
-    margin: 20px;
+input, select, textarea{
+  font-size: $base-font-size;
+  border: none;
+  appearance: none;
+  white-space: normal;
+  word-break: break-all;
+  // 矢印の消去
+  &::-ms-expand {
+    display: none;
+  }
+
+  // カレンダーのアイコンの消去
+  &[type="date"]::-webkit-calendar-picker-indicator {
+    background: none;
   }
 }

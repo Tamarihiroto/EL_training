@@ -6,20 +6,14 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <script src="https://kit.fontawesome.com/5f5b2a7314.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <% if flash[:notice] %>
-      <div class='task_flash'>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class='task_flash'>
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
-    <%= yield %>
+  <body class='tasks-body'>
+    <%= render 'header'%>
+    <main class='tasks-card'>
+      <%= yield %>
+    </main>
   </body>
+  <%= javascript_include_tag 'application' %>
 </html>

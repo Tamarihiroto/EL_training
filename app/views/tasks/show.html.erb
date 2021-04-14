@@ -1,21 +1,82 @@
-<%= render 'task_template' %>
-  <main class='tasks-show'>
-    <ul class="error_message_list">
-      <% if @task %>
-        <% @task.errors.full_messages.each do |message| %>
-          <li class="error_message"><%= message %></li>
+<div class='tasks-card__header'>
+  <%= link_to tasks_path do %>
+  <div class='tasks-back'>
+    <i class='fas fa-angle-left tasks-back__icon'></i>
+    <p>一覧</p>
+  </div>
+  <% end %>
+  <p class='tasks__label-title'>タスク詳細</p>
+</div>
+<%# タスク詳細 start %>
+<%= form_with model: @task, class: 'task-show__form', local: true do |form| %>
+  <ul class='tasks-show'>
+    <%# タスクのタイトル %>
+    <li>
+      <div>
+        <i class='far fa-check-circle tasks-show__icon--title'></i>
+      </div>
+      <div>
+        <%= form.text_field :title, class:'tasks-show__title', placeholder: 'タイトルを記入', id: 'task_title' %>
+        <% if @task.errors.include?(:title) %>
+          <p class='error-message'><%= @task.errors.full_messages_for(:title).first %></p>
         <% end %>
-      <% end %>
-    </ul>
-    <h2 class='tasks-show__title mb-15'><%= @task.title%></h2>
-    <p class='tasks-show__label'>内容</p>
-    <p class='tasks-show__content'><%= @task.content%></p>
-    <p class='tasks-show__label'>終了期限</p>
-    <p class='tasks-show_deadline'><%= l @task.deadline, format: :short %></p>
-    <p class='tasks-show__label'>ステータス</p>
-    <p class='tasks-show__status'><%= I18n.t("enums.task.status.#{@task.status}") %></p>
-    <p class='tasks-show__label'>優先順位</p>
-    <p class='tasks-show__priority'><%= I18n.t("enums.task.priority.#{@task.priority}") %></p>
-    <%= link_to "編集", edit_task_path(params[:id]), class: 'button ml-30' %>
-    <%= link_to "削除", task_path(@task.id), { method: "delete", class: 'button ml-30' } %>
-  </main>
+      </div>
+    </li>
+    <%# タスクの期限 %>
+    <li>
+      <div>
+        <i class='far fa-calendar tasks-show__icon--deadline'></i>
+      </div>
+      <div>
+         <%= form.date_field :deadline, {} %>
+      </div>
+    </li>
+    <%# タスクの内容 %>
+    <li>
+      <div>
+        <i class='far fa-comment-alt tasks-show__icon--content'></i>
+      </div>
+      <div>
+        <%= form.text_area :content, class:'tasks-show__content', id: 'task_content', placeholder: '内容を記入' %>
+        <% if @task.errors.include?(:content) %>
+          <p class='error-message'><%= @task.errors.full_messages_for(:content).first %></p>
+        <% end %>
+      </div>
+    </li>
+    <%# タスクのステータス %>
+    <li>
+      <div>
+        <i class='fas fa-tasks tasks-show__icon--status'></i>
+      </div>
+      <div class='tasks-select'>
+        <%= form.select :status, show_japanese_choices(Task.statuses, 'status') %>
+        <div class='tasks-select__bar'><div>
+      </div>
+    </li>
+    <%# タスクの優先順位 %>
+    <li>
+      <div>
+        <i class='fas fa-exclamation-triangle tasks-show__icon--priority'></i>
+      </div>
+      <div class='tasks-select'>
+        <%= form.select :priority, show_japanese_choices(Task.priorities, 'priority') %>
+        <div class='tasks-select__bar'><div>
+      </div>
+    </li>
+    <li>
+      <%= form.submit '完了' ,class:'button-blue',id: 'tasks-form-button' %>
+    </li>
+    <%# タスクの削除 %>
+    <%= link_to task_path(@task.id), method: "delete" do %>
+      <li class='tasks-show__destroy'>
+        <div>
+          <i class='far fa-trash-alt tasks-show__icon--destroy'></i>
+        </div>
+        <div>
+          <p>タスクを削除する</p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<%# タスク詳細 end %>
