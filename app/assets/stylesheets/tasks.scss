@@ -224,7 +224,8 @@
     flex-direction: column;
     border-radius: 90px 90px 0 0;
     background-color: $base-color-white;
-    position: absolute;
+    position: fixed;
+    left: 0;
     bottom: 0;
     z-index: 2;
 
@@ -306,6 +307,46 @@
     }
   }
 
+  &-option{
+    padding: 55px;
+    width: calc(100vw - 110px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 90px 90px 0 0;
+    background-color: $base-color-white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+
+    &__title{
+      margin-bottom: $space;
+      color: $base-color;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  &-sort{
+    height: 100px;
+
+    &__icon{
+      margin-right: 45px;
+      color: $base-color;
+      font-size: 50px !important;
+      line-height: 100px !important;
+    }
+
+    &__label{
+      display: none;
+    }
+
+    &__select{
+      color: $base-color;
+      line-height: 100px;
+    }
+  }
+
   // order_form
 
   &-order-form{
@@ -376,7 +417,12 @@
   }
 }
 
-#overlay{
+.form, .option{
+  position: relative;
+}
+
+// モーダル外の背景
+.overlay{
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
@@ -410,5 +456,13 @@
     &-button{
       display: none;
     }
+  }
+
+  &-option{
+    display: none;
+  }
+
+  &-sort-button{
+    display: none;
   }
 }

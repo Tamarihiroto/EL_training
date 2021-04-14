@@ -1,6 +1,10 @@
 <div class='tasks-card__header'>
   <p class='tasks__label-title'>ラベル名</p>
-  <i class="fas fa-ellipsis-h tasks-option-icon"></i>
+  <i class='fas fa-ellipsis-h tasks-option-icon' id='icon-option'></i>
+</div>
+<%# オプション画面 %>
+<div id='tasks-option'>
+  <%= render 'option' %>
 </div>
 <%# タスク一覧 start %>
 <% @tasks.each do |task| %>
@@ -26,15 +30,16 @@
   <% end %>
 <% end %>
 <%# タスク一覧 end %>
-<div id='open-tasks-form'>
+<div class='option' id='tasks-create'>
   <section class='tasks-card__create space-b'>
     <i class='fas fa-plus tasks-card__create--icon space-r'></i>
     <p class='fw-bold'>タスクを追加する</p>
   </section>
 </div>
-<div id='tasks-form'>
-  <%= render 'form' %>
-</div>
 <section>
   <%= paginate @tasks %>
 </section>
+<%# 作成フォーム %>
+<div class='form' id='tasks-form'>
+  <%= render 'form' %>
+</div>
