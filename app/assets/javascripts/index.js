@@ -36,24 +36,24 @@ document.getElementById('sort_data').onchange = function() {
 
 // 期限の初期値を今日にする
 window.onload = function () {
-//今日の日時を表示
-const date = new Date()
-const year = date.getFullYear()
-const month = date.getMonth() + 1
-const day = date.getDate()
-
-const toTwoDigits = function (num, digit) {
-  num = String(num);
-  if (num.length < digit) {
-    num = '0' + num
+  //今日の日時を表示
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  
+  const toTwoDigits = function (num, digit) {
+    num = String(num);
+    if (num.length < digit) {
+      num = '0' + num
+    }
+    return num
   }
-  return num
-}
-
-const yyyy = toTwoDigits(year, 4)
-const mm = toTwoDigits(month, 2)
-const dd = toTwoDigits(day, 2)
-const ymd = yyyy + '-' + mm + '-' + dd;
-
-document.getElementById('tasks-form__deadline').value = ymd;
+  
+  const yyyy = toTwoDigits(year, 4)
+  const mm = toTwoDigits(month, 2)
+  const dd = toTwoDigits(day, 2)
+  const ymd = yyyy + '-' + mm + '-' + dd;
+  
+  document.getElementById('tasks-form__deadline').value = ymd;
 }
