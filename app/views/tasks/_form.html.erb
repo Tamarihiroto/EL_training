@@ -1,29 +1,21 @@
-<div>
-  <div id='overlay'>
-  <div>
-  <section class='tasks-form' id='tasks_form'>
-    <%= form_with model: @task, local: true do |form| %>
-      <div class='tasks-form__top'>
-        <%= form.label :title, 'タイトル' %>
-        <%= form.text_field :title, class:'tasks-form__title', placeholder: 'タイトルを入れてください' %>
-      </div>
-      <div class='tasks-form__bottom'>
-        <%= form.label :priority, '優先順位' %>
-        <%= form.select :priority, show_japanese_choices(Task.priorities, 'priority')%>
-        <%= form.label :status, 'ステータス' %>
-        <%= form.select :status, show_japanese_choices(Task.statuses, 'status') %>
-        <div class='tasks-deadline'>
-          <%= form.label :deadline, '終了期限' %>
-          <%= form.date_field :deadline, class: 'tasks-form__deadline', id: 'tasks-form__deadline' %>
-        </div>
-        <%= form.submit '作成' ,class:'button-blue right'%>
-      </div>
-    <% end %>
-  </section>
+<div class='overlay' id='form-overlay'>
 </div>
-
-<script>
-  // document.getElementById('overlay').onclick = function() {
-  //   document.getElementById('tasks-form').style.display = "none";
-  // }
-</script>
+<section class='tasks-form' id='tasks_form'>
+  <%= form_with model: @task, local: true do |form| %>
+    <div class='tasks-form__top'>
+      <%= form.label :title, 'タイトル' %>
+      <%= form.text_field :title, class:'tasks-form__title', placeholder: 'タイトルを入れてください' %>
+    </div>
+    <div class='tasks-form__bottom'>
+      <%= form.label :priority, '優先順位' %>
+      <%= form.select :priority, show_japanese_choices(Task.priorities, 'priority')%>
+      <%= form.label :status, 'ステータス' %>
+      <%= form.select :status, show_japanese_choices(Task.statuses, 'status') %>
+      <div class='tasks-deadline'>
+        <%= form.label :deadline, '終了期限' %>
+        <%= form.date_field :deadline, class: 'tasks-form__deadline', id: 'tasks-form__deadline' %>
+      </div>
+      <%= form.submit '作成' ,class:'button-blue right'%>
+    </div>
+  <% end %>
+</section>
