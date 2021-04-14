@@ -43,7 +43,7 @@ const month = date.getMonth() + 1
 const day = date.getDate()
 
 const toTwoDigits = function (num, digit) {
-  num += ''
+  num = String(num);
   if (num.length < digit) {
     num = '0' + num
   }
