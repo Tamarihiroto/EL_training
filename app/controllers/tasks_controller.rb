@@ -10,16 +10,19 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @tasks = Task.all.recent().paginate(params[:page])
+    render :index
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_params_create)
 
     if @task.save
-      redirect_to tasks_path, notice: t('notice.new')
+      @tasks = Task.all.recent().paginate(params[:page])
+      redirect_to tasks_path
     else
-      flash.now[:alert] = t('alert.new')
-      render :new
+      @tasks = Task.all.recent().paginate(params[:page])
+      render :index
     end
   end
 
@@ -36,7 +39,7 @@ class TasksController < ApplicationController
   
   def destroy
     if @task.destroy
-      redirect_to tasks_path, notice: t('notice.destroy')
+      redirect_to tasks_path
     else
       flash.now[:alert] = t('alert.destroy')
       render :show
@@ -85,5 +88,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :content, :deadline, :status, :priority)
+  end
+
+  def task_params_create
+    params.permit(:title, :content, :deadline, :status, :priority)
   end
 end

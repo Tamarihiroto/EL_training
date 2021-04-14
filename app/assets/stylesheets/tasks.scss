@@ -216,6 +216,73 @@
     }
   }
 
+  // form
+
+  &-form{
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 90px 90px 0 0;
+    background-color: $base-color-white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+
+    &__title{
+      width: calc(100vw - 180px);
+    }
+
+    &__top{
+      margin-bottom: $space;
+    }
+
+    &__bottom{
+      display: flex;
+      flex-direction: row;
+    }
+
+    label{
+      display: none;
+    }
+
+    input{
+      padding: 20px 35px;
+      background-color: $form-background-color;
+      font-size: $form-font-size;
+      border-radius: 60px;
+    }
+
+    select{
+      padding: 30px 35px;
+      background-color: $form-background-color;
+      font-size: $form-font-size;
+      border-radius: 60px;
+      margin-right: 30px;
+    }
+
+    .field_with_errors input, .field_with_errors textarea, .field_with_errors select{
+      color: $admin-color;
+      border: solid $admin-color;
+      background-color: #FFEFEF;
+    }
+  }
+
+  &-deadline{
+    input[type="date"]{
+      position: relative;
+      text-align: center;
+      width: 255px;
+
+      &::-webkit-calendar-picker-indicator {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
   // search_form
 
   &-search{
@@ -237,6 +304,46 @@
     select{
       padding: 9px 14px;
       border: none;
+    }
+  }
+
+  &-option{
+    padding: 55px;
+    width: calc(100vw - 110px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 90px 90px 0 0;
+    background-color: $base-color-white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+
+    &__title{
+      margin-bottom: $space;
+      color: $base-color;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  &-sort{
+    height: 100px;
+
+    &__icon{
+      margin-right: 45px;
+      color: $base-color;
+      font-size: 50px !important;
+      line-height: 100px !important;
+    }
+
+    &__label{
+      display: none;
+    }
+
+    &__select{
+      color: $base-color;
+      line-height: 100px;
     }
   }
 
@@ -310,10 +417,15 @@
   }
 }
 
-#overlay{
+.form, .option{
+  position: relative;
+}
+
+// モーダル外の背景
+.overlay{
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   left: 0;
@@ -337,6 +449,20 @@
   }
 }
 
-#tasks-form-button{
-  display: none;
+#tasks{
+  &-form{
+    display: none;
+
+    &-button{
+      display: none;
+    }
+  }
+
+  &-option{
+    display: none;
+  }
+
+  &-sort-button{
+    display: none;
+  }
 }
