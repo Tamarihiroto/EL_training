@@ -1,0 +1,16 @@
+<div class='overlay' id='option-overlay'>
+</div>
+<section class='tasks-option' id='tasks_option'>
+  <p class='tasks-option__title'>オプション</p>
+  <%= form_with url: sort_by_order_tasks_path, class: 'tasks-sort', method: :get, local: true do |form| %>
+    <i class='fas fa-sort-amount-down tasks-sort__icon'></i>
+    <%= form.label :sort_data, '並び替え', class: 'tasks-sort__label' %>
+    <%= form.select :sort_data, [
+      ['作成日時が早い', 'created_at,asc'],
+      ['作成日時が遅い', 'created_at,desc'],
+      ['終了期限が近い', 'deadline,asc'],
+      ['終了期限が遅い', 'deadline,desc']
+    ], class: 'tasks-sort__select', include_blank: '並び替え'%>
+    <%= form.submit '並び替え', class: 'button-blue right', id: 'tasks-sort-button' %>
+  <% end %>
+</section>

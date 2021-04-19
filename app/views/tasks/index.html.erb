@@ -1,37 +1,47 @@
-  <div class='tasks-card__header'>
-    <p class='tasks__label-title'>ラベル名</p>
-    <i class="fas fa-ellipsis-h tasks-option-icon"></i>
-  </div>
-  <%# タスク一覧 start %>
-  <% @tasks.each do |task| %>
-    <%= link_to task_path(task.id) do %>
-      <ul class='tasks-card__table space-b'>
-        <%# タスクのステータス %>
-        <li class='space-r'>
-          <img class='tasks-card__table--status' src="/status_<%= task.status %>.svg" alt=''>
-        </li>
-        <%# タスクのタイトル %>
-        <li class="tasks-card__table--title tasks-<%= task.status %> space-r">
-          <%= task.title %>
-        </li>
-        <%# タスクの終了期限 %>
-        <li class='space-r'>
-          <%= l task.deadline, format: :short %>
-        </li>
-        <%# タスクの優先順位 %>
-        <li class="tasks-priority__<%= task.priority %> fw-bold">
-          <%= I18n.t("enums.task.priority.#{task.priority}") %>
-        </li>
-      </ul>
-    <% end %>
+<div class='tasks-card__header'>
+  <p class='tasks__label-title'>ラベル名</p>
+  <i class='fas fa-ellipsis-h tasks-option-icon' id='icon-option'></i>
+</div>
+<%# オプション画面 %>
+<div id='tasks-option'>
+  <%= render 'option' %>
+</div>
+<%# タスク一覧 start %>
+<% @tasks.each do |task| %>
+  <%= link_to task_path(task.id) do %>
+    <ul class='tasks-card__table space-b'>
+      <%# タスクのステータス %>
+      <li class='space-r'>
+        <img class='tasks-card__table--status' src="/status_<%= task.status %>.svg" alt=''>
+      </li>
+      <%# タスクのタイトル %>
+      <li class="tasks-card__table--title tasks-<%= task.status %> space-r">
+        <%= task.title %>
+      </li>
+      <%# タスクの終了期限 %>
+      <li class='space-r'>
+        <%= l task.deadline, format: :short %>
+      </li>
+      <%# タスクの優先順位 %>
+      <li class="tasks-priority__<%= task.priority %> fw-bold">
+        <%= I18n.t("enums.task.priority.#{task.priority}") %>
+      </li>
+    </ul>
   <% end %>
-  <%# タスク一覧 end %>
-  <%= link_to new_task_path do %>
-    <section class='tasks-card__create space-b'>
-      <i class='fas fa-plus tasks-card__create--icon space-r'></i>
-      <p class='fw-bold'>タスクを追加する</p>
-    </section>
-  <% end %>
-  <section>
-    <%= paginate @tasks %>
+<% end %>
+<%# タスク一覧 end %>
+<div class='option' id='tasks-create'>
+  <section class='tasks-card__create space-b'>
+    <i class='fas fa-plus tasks-card__create--icon space-r'></i>
+    <p class='fw-bold'>タスクを追加する</p>
   </section>
+</div>
+<section>
+  <%= paginate @tasks %>
+</section>
+<%# 作成フォーム %>
+<div class='form' id='tasks-form'>
+  <%= render 'form' %>
+</div>
+
+<%= javascript_include_tag 'index' %>

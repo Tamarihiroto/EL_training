@@ -14,8 +14,6 @@ document.getElementById('task_title').onchange = function() {
   showDoneButton('tasks-form-button')
 }
 
-
-
 // 期限が変更されると完了ボタンが表示
 document.getElementById('task_deadline').onchange = function() {
   showDoneButton('tasks-form-button')
