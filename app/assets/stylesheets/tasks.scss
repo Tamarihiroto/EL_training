@@ -29,6 +29,10 @@
   // ヘッダーのメニュー
   &-menu{
     padding: $space;
+
+    i{
+      color: $base-color-white;
+    }
     
     &__list{
       display: flex;
