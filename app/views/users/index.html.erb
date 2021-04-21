@@ -6,7 +6,7 @@
   </li>
   <% @users.each do |user| %>
     <li class='admin-index__item'>
-      <p><%= user.name %> (<%= tasks_count(user.id) %>)</p>
+      <p><%= user.name %> (<%= user.tasks.size %>)</p>
       <p class='admin-index__admin'><%= user.admin %></p>
     </li>
   <% end %>
