@@ -1,0 +1,39 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variable';
+
+.admin{
+  &-index{
+    &__title{
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: $space;
+    }
+
+    &__item{
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__admin{
+      position: absolute;
+      right: $space;
+    }
+
+    &__label{
+      display: flex;
+      flex-direction: row;
+
+      &--name{
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      &--admin{
+        font-size: 25px;
+        font-weight: bold;
+      }
+    }
+  }
+}
