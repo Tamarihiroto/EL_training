@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to tasks_path
     else
+      flash.now[:danger] = 'メールアドレスかパスワードが間違ってます'
       render :new
     end
   end
