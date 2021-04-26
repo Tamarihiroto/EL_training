@@ -7,7 +7,9 @@
       </li>
       <%# ロウアウトボタン %>
       <li>
-        <i class='fas fa-sign-out-alt tasks-menu__list--logout'></i>
+        <%= link_to logout_path, method: :delete do %>
+          <i class='fas fa-sign-out-alt tasks-menu__list--logout'></i>
+        <% end %>
       </li>
       <%# 検索ボタン %>
       <li>
