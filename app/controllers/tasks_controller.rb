@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :logged_in_user
   
   def index
-    @tasks = Task.all.recent().paginate(params[:page])
+    @tasks = Task.where(user_id: @current_user.id).recent().paginate(params[:page])
   end
 
   def show
@@ -11,7 +11,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @tasks = Task.all.recent().paginate(params[:page])
+    @tasks = Task.where(user_id: @current_user.id).recent().paginate(params[:page])
     render :index
   end
 
@@ -19,10 +19,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params_create)
 
     if @task.save
-      @tasks = Task.all.recent().paginate(params[:page])
+      @tasks = Task.where(user_id: @current_user.id).recent().paginate(params[:page])
       redirect_to tasks_path
     else
-      @tasks = Task.all.recent().paginate(params[:page])
+      @tasks = Task.where(user_id: @current_user.id).recent().paginate(params[:page])
       render :index
     end
   end
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
     sort_data = params[:sort_data].split(',')
     column = sort_column(sort_data[0])
     direction = sort_direction(sort_data[1])
-    @tasks = Task.sorted(column: column, direction: direction).paginate(params[:page])
+    @tasks = Task.where(user_id: @current_user.id).sorted(column: column, direction: direction).paginate(params[:page])
     render :index
   end
 
@@ -63,7 +63,7 @@ class TasksController < ApplicationController
     if is_search_params_nil?(search_params)
       @tasks = Task.none
     else
-      @tasks = Task.search(search_params).paginate(params[:page])
+      @tasks = Task.where(user_id: @current_user.id).search(search_params).paginate(params[:page])
     end
     flash.now[:alert] = t('alert.search') if @tasks.empty?
     render :index
