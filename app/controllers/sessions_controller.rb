@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(mail: params[:session][:mail].downcase)
+    user = User.find_by(mail: params[:session][:mail])
     if user && user.authenticate(params[:session][:password])
       log_in user
       redirect_to tasks_path
