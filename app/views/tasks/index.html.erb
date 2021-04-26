@@ -8,25 +8,28 @@
 </div>
 <%# タスク一覧 start %>
 <% @tasks.each do |task| %>
-  <%= link_to task_path(task.id) do %>
-    <ul class='tasks-card__table space-b'>
-      <%# タスクのステータス %>
-      <li class='space-r'>
-        <img class='tasks-card__table--status' src="/status_<%= task.status %>.svg" alt=''>
-      </li>
-      <%# タスクのタイトル %>
-      <li class="tasks-card__table--title tasks-<%= task.status %> space-r">
-        <%= task.title %>
-      </li>
-      <%# タスクの終了期限 %>
-      <li class='space-r'>
-        <%= l task.deadline, format: :short %>
-      </li>
-      <%# タスクの優先順位 %>
-      <li class="tasks-priority__<%= task.priority %> fw-bold">
-        <%= I18n.t("enums.task.priority.#{task.priority}") %>
-      </li>
-    </ul>
+  <%# 現在のユーザのタスクのみ表示 %>
+  <% if task.user_id == @current_user.id %>
+    <%= link_to task_path(task.id) do %>
+      <ul class='tasks-card__table space-b'>
+        <%# タスクのステータス %>
+        <li class='space-r'>
+          <img class='tasks-card__table--status' src="/status_<%= task.status %>.svg" alt=''>
+        </li>
+        <%# タスクのタイトル %>
+        <li class="tasks-card__table--title tasks-<%= task.status %> space-r">
+          <%= task.title %>
+        </li>
+        <%# タスクの終了期限 %>
+        <li class='space-r'>
+          <%= l task.deadline, format: :short %>
+        </li>
+        <%# タスクの優先順位 %>
+        <li class="tasks-priority__<%= task.priority %> fw-bold">
+          <%= I18n.t("enums.task.priority.#{task.priority}") %>
+        </li>
+      </ul>
+    <% end %>
   <% end %>
 <% end %>
 <%# タスク一覧 end %>
