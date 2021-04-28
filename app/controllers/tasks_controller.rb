@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i(show edit update destroy)
-  before_action :logged_in_user
   
   def index
     @tasks = Task.find_current_user(@current_user.id).recent().paginate(params[:page])

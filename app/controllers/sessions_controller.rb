@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :logged_in_user, only: %i(new create)
   before_action :forbid_login_path, only: %i(new create)
 
   def new
