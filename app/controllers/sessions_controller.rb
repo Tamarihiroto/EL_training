@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
   def forbid_login_path
     if logged_in?
       redirect_to tasks_path
-      flash.now[:danger] = 'ログイン画面には遷移できません'
+      flash.now[:danger] = 'ログイン中です'
     end
   end
 end
