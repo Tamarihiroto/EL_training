@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :forbid_login_path, only: %i(new create)
+
   def new
   end
 
@@ -27,5 +29,12 @@ class SessionsController < ApplicationController
   def log_out
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  def forbid_login_path
+    if logged_in?
+      redirect_to tasks_path
+      flash.now[:danger] = 'ログイン画面には遷移できません'
+    end
   end
 end
