@@ -7,7 +7,7 @@
     <%= link_to admin_user_path(user.id) do %>
       <li class='admin-index__item'>
         <p><%= user.name %> (<%= user.tasks.size %>)</p>
-        <p class='right'><%= I18n.t("enums.user.admin.#{user.admin}") %></p>
+        <p class='right'><%= I18n.t("user.admin.#{user.admin}") %></p>
       </li>
     <% end %>
   <% end %>

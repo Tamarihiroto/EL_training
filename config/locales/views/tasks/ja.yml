@@ -19,10 +19,10 @@ ja:
         high: 高
         middle: 中
         low: 低
-    user:
-      admin:
-        true: '管理者'
-        false: ' '
+  user:
+    admin:
+      true: '管理者'
+      false: ' '
   notice:
     new: タスクを作成しました
     update: タスクを更新しました
