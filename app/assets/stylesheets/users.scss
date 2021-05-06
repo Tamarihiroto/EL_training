@@ -52,4 +52,51 @@
       }
     }
   }
+
+  &-show{
+    &__header{
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__title{
+      margin: 0 auto 55px auto;
+      font-weight: bold;
+      color: $admin-color;
+      margin-bottom: $space;
+    }
+
+    &__list{
+      li{
+        margin-bottom: $space;
+      }
+    }
+
+    &__tasks{
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+
+  &-option{
+    position: absolute;
+    right: 55px;
+    display: flex;
+    flex-direction: row;
+
+    &__height{
+      height: 100px;
+    }
+  }
+
+  &-back{
+    display: flex;
+    flex-direction: row;
+    color: $admin-color;
+    position: absolute;
+    &__icon{
+      font-size: 65px !important;
+      margin-right: 20px;
+    }
+  }
 }
