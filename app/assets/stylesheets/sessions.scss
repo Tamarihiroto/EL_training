@@ -1,0 +1,33 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variable';
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+
+  label{
+    display: none;
+  }
+
+  &__title{
+    text-align: center;
+    color: $base-color;
+    font-size: $base-font-size;
+    font-weight: bold;
+  }
+
+  &__input{
+    margin-top: $space;
+    padding: 20px 35px;
+    width: calc(100vw - 180px);
+    background-color: $form-background-color;
+    font-size: $form-font-size;
+    border-radius: 60px;
+  }
+
+  &__button{
+    margin-top: $space;
+  }
+}
