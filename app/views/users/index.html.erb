@@ -5,9 +5,17 @@
     <p class='admin-index__label--admin'>ロール</p>
   </li>
   <% @users.each do |user| %>
-    <li class='admin-index__item'>
-      <p><%= user.name %> (<%= user.tasks.size %>)</p>
-      <p class='admin-index__admin'><%= user.admin %></p>
+    <%= link_to admin_user_path(user.id) do %>
+      <li class='admin-index__item'>
+        <p><%= user.name %> (<%= user.tasks.size %>)</p>
+        <p class='right'><%= user.admin %></p>
+      </li>
+    <% end %>
+  <% end %>
+  <%= link_to new_admin_user_path do %>
+    <li class='user-create'>
+      <i class='fas fa-plus user-create__icon space-r'></i>
+      <p class='fw-bold'>ユーザを作成</p>
     </li>
   <% end %>
 </ul>

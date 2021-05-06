@@ -2,16 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'variable';
+.user{
+  &-create{
+    display: flex;
+    flex-direction: row;
+
+    &__icon{
+      font-size: 60px !important;
+      color: $admin-color;
+    }
+  }
+}
 
 .admin{
   &-index{
     &__title{
+      margin-bottom: $space;
       text-align: center;
       font-weight: bold;
-      margin-bottom: $space;
+      color: $admin-color;
     }
 
     &__item{
+      margin-bottom: $space;
       display: flex;
       flex-direction: row;
     }
@@ -24,6 +37,7 @@
     &__label{
       display: flex;
       flex-direction: row;
+      margin-bottom: 20px;
 
       &--name{
         font-size: 25px;
@@ -33,6 +47,8 @@
       &--admin{
         font-size: 25px;
         font-weight: bold;
+        position: absolute;
+        right:92px;
       }
     }
   }
