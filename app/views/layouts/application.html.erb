@@ -10,6 +10,9 @@
   </head>
 
   <body class='tasks-body'>
+    <% if flash[:danger] %>
+      <p class='flash-alert'><%= flash[:danger] %></p>
+    <% end %>
     <%= render 'header'%>
     <main class='tasks-card'>
       <%= yield %>
