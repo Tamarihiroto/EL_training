@@ -1,5 +1,5 @@
 <section class='admin-form__list'>
-  <%= form_with model: @user, local: true do |form| %>
+  <%= form_with scope: :admin, url: url, method: method,local: true do |form| %>
     <%= form.label :name, 'ユーザー名', class:'admin-form__label' %>
     <%= form.text_field :name, class:'admin-form', placeholder: 'ユーザー名を入れてください' %>
     <%= form.label :mail, 'メールアドレス', class:'admin-form__label' %>

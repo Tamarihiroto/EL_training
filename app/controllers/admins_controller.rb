@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
+class AdminsController < ApplicationController
   before_action :set_user, only: %i(show edit update destroy)
-  before_action :admin_user
+  # before_action :admin_user
   before_action :forbid_delete_admin_user, only: %i(update destroy)
 
   def index
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to admin_users_path
+      redirect_to admins_path
     else
       render :new
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_users_path
+      redirect_to admins_path
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      redirect_to admin_users_path
+      redirect_to admins_path
     else
       render :show
     end
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :mail, :password, :password_confirmation, :admin)
+    params.require(:admin).permit(:name, :mail, :password, :password_confirmation, :admin)
   end
 
   # 管理者画面のアクセス制限
