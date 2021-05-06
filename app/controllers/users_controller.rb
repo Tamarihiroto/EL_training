@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i(show edit update destroy forbid_delete_admin_user)
+  before_action :set_user, only: %i(show edit update destroy)
   before_action :admin_user
   before_action :forbid_delete_admin_user, only: %i(update destroy)
 
