@@ -2,10 +2,12 @@
   <%= form_with model: @user, local: true do |form| %>
     <%= form.label :name, 'ユーザー名', class:'admin-form__label' %>
     <%= form.text_field :name, class:'admin-form', placeholder: 'ユーザー名を入れてください' %>
-    <%= form.label :name, 'メールアドレス', class:'admin-form__label' %>
+    <%= form.label :mail, 'メールアドレス', class:'admin-form__label' %>
     <%= form.text_field :mail, class:'admin-form', placeholder: 'メールアドレスを入れてください' %>
-    <%= form.label :name, 'パスワード', class:'admin-form__label' %>
-    <%= form.password_field :password_field, class:'admin-form', placeholder: 'パスワードを入れてください' %>
+    <%= form.label :password, 'パスワード', class:'admin-form__label' %>
+    <%= form.password_field :password, class:'admin-form', placeholder: 'パスワードを入れてください' %>
+    <%= form.label :password_confirmation, 'パスワードの確認', class:'admin-form__label' %>
+    <%= form.password_field :password_confirmation, class:'admin-form', placeholder: 'パスワードを入れてください' %>
     <p class="admin-form__label">ロール</p>
     <div class='admin-form__role'>
       <%= form.check_box :admin, class: 'admin-form__role--input' %>
