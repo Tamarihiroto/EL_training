@@ -22,7 +22,7 @@ ja:
   user:
     admin:
       true: '管理者'
-      false: ' '
+      false: '一般'
   notice:
     new: タスクを作成しました
     update: タスクを更新しました
