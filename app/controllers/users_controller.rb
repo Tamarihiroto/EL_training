@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   # 管理者がいなくならないように制限
   def forbid_delete_admin_user
     @users = User.where(admin: true)
-    if @users.size < 2 && @user.admin
+    if @users.size == 1 && @user.admin
       redirect_to admin_users_path
     end
   end
