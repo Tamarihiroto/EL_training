@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i(show edit update destroy)
+  before_action :admin_user
 
   def index
     @users = User.eager_load(:tasks).all
@@ -52,5 +53,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :mail, :password, :password_confirmation, :admin)
+  end
+
+  # 管理者画面のアクセス制限
+  def admin_user
+    unless @current_user.admin?
+      redirect_to tasks_path
+    end
   end
 end
