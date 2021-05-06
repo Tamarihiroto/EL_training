@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i(show edit update destroy)
-  before_action :admin_user
+  # before_action :admin_user
   before_action :forbid_delete_admin_user, only: %i(update destroy)
 
   def index
@@ -37,9 +37,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @tasks = Task.where(user_id: @user.id)
     if @user.destroy
-      @tasks.destroy_all
       redirect_to admin_users_path
     else
       render :show
@@ -66,7 +64,7 @@ class UsersController < ApplicationController
   # 管理者がいなくならないように制限
   def forbid_delete_admin_user
     @users = User.where(admin: true)
-    if @users.size == 1 && @user.admin
+    if @users.size == 0 && @user.admin?
       redirect_to admin_users_path
     end
   end
