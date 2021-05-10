@@ -5,10 +5,7 @@ Rails.application.routes.draw do
     get :sort_by_order, on: :collection
   end
 
-  resources :users
-  get '/admin', to: 'users#index', as: 'admin_users'
-  get '/admin/:id', to: 'users#show', as: 'admin_user'
-  get '/admin/:id/edit', to: 'users#edit', as: 'edit_admin_user'
+  resources :admins
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

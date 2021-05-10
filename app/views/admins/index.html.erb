@@ -1,0 +1,20 @@
+<p class='admin-index__title'>ユーザー一覧</p>
+<ul class='admin-index__list'>
+  <li class='admin-index__label'>
+    <p class='admin-index__label--name'>ユーザー名</p>
+  </li>
+  <% @users.each do |user| %>
+    <%= link_to admin_path(user.id) do %>
+      <li class='admin-index__item'>
+        <p><%= user.name %> (<%= user.tasks.size %>)</p>
+        <p class='right'><%= I18n.t("user.admin.#{user.admin}") %></p>
+      </li>
+    <% end %>
+  <% end %>
+  <%= link_to new_admin_path do %>
+    <li class='user-create'>
+      <i class='fas fa-plus user-create__icon space-r'></i>
+      <p class='fw-bold'>ユーザを作成</p>
+    </li>
+  <% end %>
+</ul>
