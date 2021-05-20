@@ -16,6 +16,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params_create)
+    @task.user_id = @current_user.id
 
     if @task.save
       @tasks = Task.extract_current_user(@current_user.id).recent().paginate(params[:page])
@@ -30,6 +31,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task.user_id = @current_user.id
     if @task.update(task_params)
       redirect_to tasks_path
     else

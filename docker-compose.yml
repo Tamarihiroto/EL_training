@@ -14,9 +14,8 @@ services:
       context: .
     volumes:
       - .:/var/src/app
-      - bundle_install:/usr/local/bundle
     ports:
-      - '3000:3000'
+      - '3005:3000'
     environment:
       RAILS_ENV: development
       PG_DATABASE: postgres
@@ -55,5 +54,3 @@ services:
     logging:
       driver: none
     container_name: selenium_chrome
-  volumes:
-    bundle_install:
