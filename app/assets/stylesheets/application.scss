@@ -16,6 +16,10 @@
  @import 'initialisation';
  @import 'common';
 
+ *{
+  -webkit-appearance: none;
+ }
+
 .task_flash{
   background-color: #333;
   border-radius: 5px;
